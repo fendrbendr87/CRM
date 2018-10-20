@@ -11,7 +11,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     Prospects=db.relationship('Prospects', backref='leads', lazy='dynamic')
-#    Clients=db.relationship('orders', backref='order_history', lazy='dynamic')
+    Clients=db.relationship('Clients', backref='listings', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -46,7 +46,14 @@ class Prospects(db.Model):
     def __repr__(self):
         return '<Prospects> first_name: {}, last_name: {}, phone_cell: {}'.format(self.first_name, self.last_name, self.phone_cell)
 
-
+class Clients(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(20))
+    last_name = db.Column(db.String(20))
+    phone_cell = db.Column(db.Integer)
+    user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
+    def __repr__(self):
+        return '<Prospects> first_name: {}, last_name: {}, phone_cell: {}'.format(self.first_name, self.last_name, self.phone_cell)
 
 @login.user_loader
 def load_user(id):

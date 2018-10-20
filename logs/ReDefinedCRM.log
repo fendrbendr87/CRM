@@ -99,3 +99,8 @@ BuildError: Could not build url for endpoint 'clients'. Did you mean 'login' ins
 2018-10-19 22:58:45,485 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
 2018-10-19 22:59:01,498 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
 2018-10-19 23:01:00,891 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 12:45:51,861 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
+2018-10-20 12:58:31,479 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
+2018-10-20 12:58:35,010 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
+2018-10-20 12:59:24,779 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
+2018-10-20 12:59:32,189 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
