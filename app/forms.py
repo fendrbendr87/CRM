@@ -38,7 +38,8 @@ class ResetPasswordForm(FlaskForm):
     submit = SubmitField('Request Password Reset')
 
 class AddProspectForm(FlaskForm):
-    first_name = StringField('First Name', validators=[DataRequired()], maxlength=20)
-    last_name = StringField('Last Name', validators=[DataRequired()], maxlength=20)
-    phone_cell = IntegerField('Cell Number', validators=[DataRequired()], maxlength=10)
+    first_name = StringField('First Name', validators=[DataRequired()])
+    last_name = StringField('Last Name', validators=[DataRequired()])
+    phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
     submit = SubmitField('Add Prospect')
+

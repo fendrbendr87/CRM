@@ -35,7 +35,8 @@ class User(UserMixin, db.Model):
         except:
             return
         return User.query.get(id)
-    
+
+#WHENEVER YOU EDIT THE MODELS, MAKE SURE YOU ADD THE NEW FIELDS TO THE FORMS YOU WILL BE PASSING BACK TO THE ROUTE.PY!
 class Prospects(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name=db.Column(db.String(20))

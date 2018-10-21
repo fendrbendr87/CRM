@@ -1,6 +1,6 @@
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm
-from app.models import User
+from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddProspectForm
+from app.models import User, Prospects
 from app.email import send_password_reset_email
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
@@ -11,8 +11,18 @@ from werkzeug.urls import url_parse
 @app.route('/index')
 @login_required
 def index():
-    
     return render_template("index.html", title='Index')
+
+@app.route('/listings', methods=['GET', 'POST'])
+@login_required
+def listings():
+    return render_template('listings.html', title='Listings')
+
+@app.route('/prospects', methods=['GET', 'POST'])
+@login_required
+def prospects():
+    all_prospects = get_prospects(current_user=current_user)
+    return render_template('prospects.html', title='Prospects', all_prospects=all_prospects)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -35,6 +45,22 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/add_prospect', methods=['GET', 'POST'])
+@login_required
+def add_prospect():
+    form = AddProspectForm()
+    if form.validate_on_submit():
+        form = AddProspectForm()
+        if form.validate_on_submit():
+            prospect_create = create_prospect(current_user=current_user, first_name=form.first_name.data, last_name=form.last_name.data, phone_cell=form.phone_cell.data)
+            if prospect_create == True:
+                flash('Congradulations, you added the prospect to your CRM!')
+                return redirect(url_for('prospects'))
+            elif prospect_create == False:
+                flash('Something is wrong. Try again!')
+    return render_template('add_prospect.html', title='Add Prospect', form=form)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -77,3 +103,25 @@ def reset_password(token):
         flash('Your password has been reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
+
+
+def create_prospect(current_user, first_name, last_name, phone_cell):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    user_account_pk = currentuser.id
+    new_prospect = Prospects(first_name=first_name, last_name=last_name, phone_cell=phone_cell, user_account_pk=user_account_pk)
+    db.session.add(new_prospect)
+    db.session.commit()
+    return True
+
+#for loggin purposes, you will have to add some sort of tracking as to which user edits
+#which information for which prospects
+def edit_prospect(current_user, first_name, last_name, phone_cell):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    user_account_pk = currentuser.id
+    #TODO FINISH THIS
+
+def get_prospects(current_user):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    all_prospects=Prospects.query.filter_by(user_account_pk=account_pk).all()
+    return all_prospects
