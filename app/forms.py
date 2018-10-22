@@ -43,3 +43,7 @@ class AddProspectForm(FlaskForm):
     phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
     submit = SubmitField('Add Prospect')
 
+class ModifyProspectForm(FlaskForm):
+    modified_first_name = StringField('First Name', validators=[DataRequired()])
+    modified_last_name = StringField('Last Name', validators=[DataRequired()])
+    submit = SubmitField('Update Information')

@@ -104,6 +104,9 @@ def reset_password(token):
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
 
+#@app.route('/prospects/<prospect_id>', methods=['GET', 'POST])
+#def prospect_info()
+    #TODO MAKE GET PROSPECT HERE FUNCTION AND PUT IT HERE!!
 
 def create_prospect(current_user, first_name, last_name, phone_cell):
     currentuser = User.query.filter_by(username=current_user.username).first()
@@ -125,3 +128,18 @@ def get_prospects(current_user):
     account_pk = currentuser.id
     all_prospects=Prospects.query.filter_by(user_account_pk=account_pk).all()
     return all_prospects
+
+def modify_prospect(current_user, first_name, last_name, new_first_name, new_last_name):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
+    select_prospect.first_name = new_first_name
+    select_prospect.last_name = new_last_name
+    db.session.commit
+    return True
+
+def get_prospect(current_user, first_name, last_name):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
+    #TODO FINISH THIS FUNCTION TO RETURN CURRENT PROSPECT!!
