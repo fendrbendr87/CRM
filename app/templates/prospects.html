@@ -3,14 +3,17 @@
 
 {% block app_content %}
     <h1>Hello, {{ current_user.username }}!</h1>
-    
-    <button type="button" class="btn btn-info"><a href="{{ url_for('add_prospect') }}">Add Prospect</a></button>
+    <div class="btn-group">
+        <button type="button" class="btn btn-info"><a href="{{ url_for('add_prospect') }}">Add Prospect</a></button>
+        <button type="button" class="btn btn-success"><a href="{{ url_for('add_client') }}">Add Client</a></button>
+    </div>
     
     <div><p><b>Here are your current prospects:</b></p></div>
     {% for everyone in all_prospects %}
     <div><p>First Name: {{ everyone.first_name }}</p></div>
     <div><p>Last Name: {{ everyone.last_name }}</p></div>
     <div><p>Cell Number: {{ everyone.phone_cell }}</p></div>
+    <button type="button" class="btn btn-warning"><a href="{{ url_for('view_prospect', prospect_id=everyone.id) }}">View Prospect Information</a></button>
     {% endfor %}
 
 {% endblock %}

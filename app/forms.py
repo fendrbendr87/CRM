@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
-from app.models import User
+from app.models import User, Prospects, Clients
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -46,4 +46,17 @@ class AddProspectForm(FlaskForm):
 class ModifyProspectForm(FlaskForm):
     modified_first_name = StringField('First Name', validators=[DataRequired()])
     modified_last_name = StringField('Last Name', validators=[DataRequired()])
-    submit = SubmitField('Update Information')
+    modified_phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
+    submit = SubmitField('Update Prospect Information')
+
+class AddClientForm(FlaskForm):
+    first_name = StringField('First Name', validators=[DataRequired()])
+    last_name = StringField('Last Name', validators=[DataRequired()])
+    phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
+    submit = SubmitField('Add Client')
+
+class ModifyClientForm(FlaskForm):
+    modified_first_name = StringField('First Name', validators=[DataRequired()])
+    modified_last_name = StringField('Last Name', validators=[DataRequired()])
+    modified_phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
+    submit = SubmitField('Update Client Information')
