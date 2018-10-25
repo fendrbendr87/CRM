@@ -123,9 +123,7 @@ def reset_password(token):
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
 
-#@app.route('/prospects/<prospect_id>', methods=['GET', 'POST])
-#def prospect_info()
-    #TODO MAKE GET PROSPECT HERE FUNCTION AND PUT IT HERE!!
+
 
 def create_prospect(current_user, first_name, last_name, phone_cell):
     currentuser = User.query.filter_by(username=current_user.username).first()
@@ -165,15 +163,25 @@ def get_clients(current_user):
     all_clients=Clients.query.filter_by(user_account_pk=account_pk).all()
     return all_clients
 
-def modify_prospect(current_user, first_name, last_name, new_first_name, new_last_name):
+def modify_prospect(current_user, first_name, last_name, modified_first_name, modified_last_name, modified_phone_cell):
     currentuser = User.query.filter_by(username=current_user.username).first()
     account_pk = currentuser.id
     select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
-    select_prospect.first_name = new_first_name
-    select_prospect.last_name = new_last_name
+    select_prospect.first_name = modified_first_name
+    select_prospect.last_name = modified_last_name
+    select_prospect.phone_cell = modified_phone_cell
     db.session.commit
     return True
 
+def modify_client(current_user, first_name, last_name, modified_first_name, modified_last_name, modified_phone_cell):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    select_client = Clients.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
+    select_client.first_name = modified_first_name
+    select_client.last_name = modified_last_name
+    select_client.phone_cell = modified_phone_cell
+    db.session.commit
+    return True
 
 def get_prospect(current_user, first_name, last_name):
     currentuser = User.query.filter_by(username=current_user.username).first()
