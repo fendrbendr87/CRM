@@ -1,7 +1,8 @@
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddProspectForm, AddClientForm
+from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddProspectForm, AddClientForm, ModifyProspectForm
 from app.models import User, Prospects, Clients
 from app.email import send_password_reset_email
+from app.queryfunc import create_prospect, create_client, edit_prospect, get_prospects, get_clients, modify_prospect, modify_client, select_prospect, upgrade_prospect_client
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -31,7 +32,11 @@ def view_prospect(prospect_id):
     currentuser = User.query.filter_by(username=current_user.username).first()
     account_pk = currentuser.id
     select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, id=prospect_id).first()
-    return render_template('view_prospect.html', title = 'View Prospect', select_prospect=select_prospect)
+    form = ModifyProspectForm()
+    form.modified_first_name.data = select_prospect.first_name
+    form.modified_last_name.data = select_prospect.last_name
+    form.modified_phone_cell.data = select_prospect.phone_cell
+    return render_template('view_prospect.html', title = 'View Prospect', select_prospect=select_prospect, form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -122,79 +127,3 @@ def reset_password(token):
         flash('Your password has been reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
-
-
-
-def create_prospect(current_user, first_name, last_name, phone_cell):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    user_account_pk = currentuser.id
-    new_prospect = Prospects(first_name=first_name, last_name=last_name, phone_cell=phone_cell, user_account_pk=user_account_pk)
-    db.session.add(new_prospect)
-    db.session.commit()
-    return True
-
-
-
-def create_client(current_user, first_name, last_name, phone_cell):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    user_account_pk = currentuser.id
-    new_client = Clients(first_name=first_name, last_name=last_name, phone_cell=phone_cell, user_account_pk=user_account_pk)
-    db.session.add(new_client)
-    db.session.commit()
-    return True
-    
-
-#for loggin purposes, you will have to add some sort of tracking as to which user edits
-#which information for which prospects
-def edit_prospect(current_user, first_name, last_name, phone_cell):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    user_account_pk = currentuser.id
-    #TODO FINISH THIS
-
-def get_prospects(current_user):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    all_prospects=Prospects.query.filter_by(user_account_pk=account_pk).all()
-    return all_prospects
-
-def get_clients(current_user):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    all_clients=Clients.query.filter_by(user_account_pk=account_pk).all()
-    return all_clients
-
-def modify_prospect(current_user, first_name, last_name, modified_first_name, modified_last_name, modified_phone_cell):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
-    select_prospect.first_name = modified_first_name
-    select_prospect.last_name = modified_last_name
-    select_prospect.phone_cell = modified_phone_cell
-    db.session.commit
-    return True
-
-def modify_client(current_user, first_name, last_name, modified_first_name, modified_last_name, modified_phone_cell):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    select_client = Clients.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
-    select_client.first_name = modified_first_name
-    select_client.last_name = modified_last_name
-    select_client.phone_cell = modified_phone_cell
-    db.session.commit
-    return True
-
-def get_prospect(current_user, first_name, last_name):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
-    prospect_id = select_prospect.id
-    return prospect_id
-    
-    #TODO FINISH THIS FUNCTION TO RETURN CURRENT PROSPECT!!
-
-def upgrade_prospect_client(current_user, first_name, last_name, phone_cell):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name, phone_cell=phone_cell).first()
-    #FINISH THIS
-

@@ -1,4 +1,11 @@
-2018-10-19 22:41:44,891 ERROR: Exception on /login [GET] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
+2018-10-20 19:00:46,804 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 19:06:38,853 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 19:08:34,167 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 19:09:01,270 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 19:10:37,926 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 19:11:12,136 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 19:18:56,010 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 19:19:03,471 ERROR: Exception on / [GET] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,8 +17,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/routes.py", line 31, in login
-    return render_template('login.html', title='Sign In', form=form)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/routes.py", line 15, in index
+    return render_template("index.html", title='Index')
   File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
   File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 117, in _render
@@ -20,7 +29,7 @@ Traceback (most recent call last):
     return self.environment.handle_exception(exc_info, True)
   File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/login.html", line 2, in top-level template code
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/index.html", line 2, in top-level template code
     {% import 'bootstrap/wtf.html' as wtf %}
   File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
@@ -30,12 +39,10 @@ Traceback (most recent call last):
     {%- block html %}
   File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
     {% block body -%}
-  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/base.html", line 45, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/login.html", line 15, in block "app_content"
-    <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
+    {% block navbar %}
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/base.html", line 30, in block "navbar"
+    <li><a href="{{ url_for('Prospects') }}">Prospects</a></li>
   File "/home/gene/.local/lib/python2.7/site-packages/flask/helpers.py", line 356, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
@@ -44,8 +51,19 @@ Traceback (most recent call last):
     force_external=external)
   File "/home/gene/.local/lib/python2.7/site-packages/werkzeug/routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
-BuildError: Could not build url for endpoint 'reset_password_request'. Did you mean 'register' instead?
-2018-10-19 22:41:49,840 ERROR: Exception on /login [GET] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
+BuildError: Could not build url for endpoint 'Prospects'. Did you mean 'listings' instead?
+2018-10-20 19:20:16,282 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:06:05,016 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:06:31,219 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:07:33,428 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:08:38,145 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:08:58,128 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:09:35,853 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:10:08,459 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:18:33,116 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:19:09,121 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:20:47,961 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:20:48,832 ERROR: Exception on /prospects [GET] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -57,8 +75,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/routes.py", line 31, in login
-    return render_template('login.html', title='Sign In', form=form)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/routes.py", line 24, in prospects
+    return render_template('prospects.html', title='Prospects')
   File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
   File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 117, in _render
@@ -67,7 +87,7 @@ Traceback (most recent call last):
     return self.environment.handle_exception(exc_info, True)
   File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/login.html", line 2, in top-level template code
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/prospects.html", line 2, in top-level template code
     {% import 'bootstrap/wtf.html' as wtf %}
   File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
@@ -79,10 +99,10 @@ Traceback (most recent call last):
     {% block body -%}
   File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
     {% block content -%}
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/base.html", line 45, in block "content"
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/base.html", line 52, in block "content"
     {% block app_content %}{% endblock %}
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/login.html", line 15, in block "app_content"
-    <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/prospects.html", line 8, in block "app_content"
+    <button type="button" class="btn btn-info"><a href="{{ url_for('add_prospect') }}">Add Prospect</a></button>
   File "/home/gene/.local/lib/python2.7/site-packages/flask/helpers.py", line 356, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
@@ -91,4 +111,7 @@ Traceback (most recent call last):
     force_external=external)
   File "/home/gene/.local/lib/python2.7/site-packages/werkzeug/routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
-BuildError: Could not build url for endpoint 'reset_password_request'. Did you mean 'register' instead?
+BuildError: Could not build url for endpoint 'add_prospect'. Did you mean 'prospects' instead?
+2018-10-20 21:50:15,368 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:52:43,281 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-20 21:53:15,509 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
