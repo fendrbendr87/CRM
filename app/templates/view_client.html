@@ -13,7 +13,10 @@
     <div class="wrapper">
         <div class="sampleFields">
             <div class="fieldControl">
-                <button id="listButton" type="button" class="btn btn-warning">Modify Client</button>
+                <div class="btn-group">
+                    <button id="listButton" type="button" class="btn btn-warning">Modify Client</button>
+                    <a href="{{ url_for('listings') }}"><button id="listButton" type="button" class="btn btn-info">Downgrade Client</button></a>
+                </div>
             </div>
             <h2>Client Information:</h2>
             <div><p>First Name: {{ select_client.first_name }}</p></div>
@@ -22,7 +25,7 @@
         </div>
         <div class="sampleFields hidden">
             <div class="fieldControl">
-                <button id="formButton" type="button" class="btn btn-success">Modify Client</button>
+                <button id="formButton" type="button" class="btn btn-info">Cancel Client</button>
             </div>
             <h2>Modify Client Information:</h2>
             <div class="row">

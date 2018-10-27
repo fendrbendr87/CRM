@@ -13,7 +13,10 @@
     <div class="wrapper">
         <div class="sampleFields">
             <div class="fieldControl">
-                <button id="listButton" type="button" class="btn btn-warning">Modify Prospect</button>
+                <div class="btn-group">
+                    <button id="listButton" type="button" class="btn btn-warning">Modify Prospect</button>
+                    <a href="{{ url_for('prospects') }}"><button id="listButton" type="button" class="btn btn-success">Upgrade Prospect</button></a>
+                </div>
             </div>
             <h2>Prospect Information:</h2>
             <div><p>First Name: {{ select_prospect.first_name }}</p></div>
@@ -22,7 +25,7 @@
         </div>
         <div class="sampleFields hidden">
             <div class="fieldControl">
-                <button id="formButton" type="button" class="btn btn-success">Modify Prospect</button>
+                <button id="formButton" type="button" class="btn btn-info">Cancel Modify</button>
             </div>
             <h2>Modify Prospect Information:</h2>
             <div class="row">

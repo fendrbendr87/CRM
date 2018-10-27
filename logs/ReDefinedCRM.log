@@ -66,3 +66,55 @@ Traceback (most recent call last):
     raise BuildError(endpoint, values, method, self)
 BuildError: Could not build url for endpoint 'clients'. Did you mean 'add_client' instead?
 2018-10-26 22:21:46,875 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-26 22:30:51,139 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-26 22:32:45,028 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-26 22:33:07,945 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-26 22:35:35,708 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-26 22:35:36,330 ERROR: Exception on /view_prospect/1 [GET] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/routes.py", line 43, in view_prospect
+    return render_template('view_prospect.html', title = 'View Prospect', select_prospect=select_prospect, form=form)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/view_prospect.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/base.html", line 52, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/view_prospect.html", line 17, in block "app_content"
+    <a href="{{ url_for(prospects) }}"><button id="listButton" type="button" class="btn btn-success">Upgrade Prospect</button></a>
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/helpers.py", line 305, in url_for
+    if endpoint[:1] == '.':
+UndefinedError: 'prospects' is undefined
+2018-10-26 22:35:59,182 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-26 22:36:42,856 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-26 22:37:51,919 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-26 22:38:27,236 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+2018-10-26 22:39:01,097 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
