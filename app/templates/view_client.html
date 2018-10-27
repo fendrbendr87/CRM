@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+<style>
+.hidden {
+    display: none !important;
+}
+</style>
+
+{% block app_content %}
+    <h1>Hello, {{ current_user.username }}!</h1>
+    <div class="wrapper">
+        <div class="sampleFields">
+            <div class="fieldControl">
+                <button id="listButton" type="button" class="btn btn-warning">Modify Client</button>
+            </div>
+            <h2>Client Information:</h2>
+            <div><p>First Name: {{ select_client.first_name }}</p></div>
+            <div><p>Last Name: {{ select_client.last_name }}</p></div>
+            <div><p>Cell Number: {{ select_client.phone_cell }}</p></div>
+        </div>
+        <div class="sampleFields hidden">
+            <div class="fieldControl">
+                <button id="formButton" type="button" class="btn btn-success">Modify Client</button>
+            </div>
+            <h2>Modify Client Information:</h2>
+            <div class="row">
+                    <div class="col-md-4">
+                        {{ wtf.quick_form(form) }}
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        "use strict";
+        document.addEventListener("DOMContentLoaded", function(event) {
+            /* execute this code after the document is ready */
+            createToggleButton("listButton", "hidden", ".sampleFields");
+            createToggleButton("formButton", "hidden", ".sampleFields");
+        });
+        
+        function createToggleButton(buttonId, className, selector) {
+            /* attach a click event to #buttonId that toggles a css class on elements
+            with the ids listed in the toggleIds list */
+            var nodes = document.querySelectorAll(selector); 
+            document.getElementById(buttonId).addEventListener("click", function(event) {
+                nodes.forEach(element => element.classList.toggle(className));
+            });
+        }
+    </script>
+{% endblock %}

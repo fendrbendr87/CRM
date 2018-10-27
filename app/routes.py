@@ -1,5 +1,5 @@
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddProspectForm, AddClientForm, ModifyProspectForm
+from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddProspectForm, AddClientForm, ModifyProspectForm, ModifyClientForm
 from app.models import User, Prospects, Clients
 from app.email import send_password_reset_email
 from app.queryfunc import create_prospect, create_client, edit_prospect, get_prospects, get_clients, upgrade_prospect_client
@@ -41,6 +41,22 @@ def view_prospect(prospect_id):
         flash('Your Prospect Information has been modified.')
         return redirect(url_for('prospects'))
     return render_template('view_prospect.html', title = 'View Prospect', select_prospect=select_prospect, form=form)
+
+@app.route('/view_client/<client_id>', methods=['GET', 'POST'])
+@login_required
+def view_client(client_id):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    select_client = Clients.query.filter_by(user_account_pk=account_pk, id=client_id).first()
+    form = ModifyClientForm(modified_first_name=select_client.first_name, modified_last_name=select_client.last_name, modified_phone_cell=select_client.phone_cell)
+    if form.validate_on_submit():
+        select_client.first_name=form.modified_first_name.data
+        select_client.last_name=form.modified_last_name.data
+        select_client.phone_cell=form.modified_phone_cell.data
+        db.session.commit()
+        flash('Your Client Information has been modified.')
+        return redirect(url_for('listings'))
+    return render_template('view_client.html', title = 'View Client', select_client=select_client, form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

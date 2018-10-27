@@ -3,7 +3,6 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Prospects, Clients
-from app.queryfunc import select_prospect
 from app import app, db
 
 

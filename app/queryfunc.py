@@ -64,12 +64,12 @@ def get_clients(current_user):
 #    return True
 
  
-def select_prospect(current_user, first_name, last_name):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
-    return prospect
-    #TODO FINISH THIS FUNCTION TO RETURN CURRENT PROSPECT!!
+#def select_prospect(current_user, first_name, last_name):
+#    currentuser = User.query.filter_by(username=current_user.username).first()
+#    account_pk = currentuser.id
+#    prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
+#    return prospect
+#    #TODO FINISH THIS FUNCTION TO RETURN CURRENT PROSPECT!!
 
 def upgrade_prospect_client(current_user, first_name, last_name, phone_cell):
     currentuser = User.query.filter_by(username=current_user.username).first()
