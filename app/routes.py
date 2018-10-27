@@ -32,11 +32,12 @@ def view_prospect(prospect_id):
     currentuser = User.query.filter_by(username=current_user.username).first()
     account_pk = currentuser.id
     select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, id=prospect_id).first()
-    form = ModifyProspectForm(modified_first_name=select_prospect.first_name, modified_last_name=select_prospect.last_name, modified_phone_cell=select_prospect.phone_cell)
+    form = ModifyProspectForm(modified_first_name=select_prospect.first_name, modified_last_name=select_prospect.last_name, modified_phone_cell=select_prospect.phone_cell, notes=select_prospect.notes)
     if form.validate_on_submit():
         select_prospect.first_name=form.modified_first_name.data
         select_prospect.last_name=form.modified_last_name.data
         select_prospect.phone_cell=form.modified_phone_cell.data
+        select_prospect.notes=form.modified_notes.data
         db.session.commit()
         flash('Your Prospect Information has been modified.')
         return redirect(url_for('prospects'))
@@ -48,11 +49,12 @@ def view_client(client_id):
     currentuser = User.query.filter_by(username=current_user.username).first()
     account_pk = currentuser.id
     select_client = Clients.query.filter_by(user_account_pk=account_pk, id=client_id).first()
-    form = ModifyClientForm(modified_first_name=select_client.first_name, modified_last_name=select_client.last_name, modified_phone_cell=select_client.phone_cell)
+    form = ModifyClientForm(modified_first_name=select_client.first_name, modified_last_name=select_client.last_name, modified_phone_cell=select_client.phone_cell, modified_notes=select_client.notes)
     if form.validate_on_submit():
         select_client.first_name=form.modified_first_name.data
         select_client.last_name=form.modified_last_name.data
         select_client.phone_cell=form.modified_phone_cell.data
+        select_client.notes=form.modified_notes.data
         db.session.commit()
         flash('Your Client Information has been modified.')
         return redirect(url_for('listings'))

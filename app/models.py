@@ -42,19 +42,21 @@ class Prospects(db.Model):
     first_name=db.Column(db.String(20))
     last_name=db.Column(db.String(20))
     phone_cell=db.Column(db.Integer)
+    notes=db.Column(db.String(140))
     user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Prospects> first_name: {}, last_name: {}, phone_cell: {}'.format(self.first_name, self.last_name, self.phone_cell)
+        return '<Prospects> first_name: {}, last_name: {}, phone_cell: {}, notes: {}'.format(self.first_name, self.last_name, self.phone_cell, self.notes)
 
 class Clients(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(20))
     last_name = db.Column(db.String(20))
     phone_cell = db.Column(db.Integer)
+    notes=db.Column(db.String(140))
     user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
     def __repr__(self):
-        return '<Prospects> first_name: {}, last_name: {}, phone_cell: {}'.format(self.first_name, self.last_name, self.phone_cell)
+        return '<Prospects> first_name: {}, last_name: {}, phone_cell: {}, notes: {}'.format(self.first_name, self.last_name, self.phone_cell, self.notes)
 
 @login.user_loader
 def load_user(id):
