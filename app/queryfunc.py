@@ -41,25 +41,27 @@ def get_clients(current_user):
     all_clients=Clients.query.filter_by(user_account_pk=account_pk).all()
     return all_clients
 
-def modify_prospect(current_user, first_name, last_name, modified_first_name, modified_last_name, modified_phone_cell):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
-    select_prospect.first_name = modified_first_name
-    select_prospect.last_name = modified_last_name
-    select_prospect.phone_cell = modified_phone_cell
-    db.session.commit
-    return True
+#FOR NOW, THE MODIFY_PROSPECT IS WRITTEN INTO THE ROUTE
+#def modify_prospect(current_user, first_name, last_name, modified_first_name, modified_last_name, modified_phone_cell):
+#    currentuser = User.query.filter_by(username=current_user.username).first()
+#    account_pk = currentuser.id
+#    select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
+#    select_prospect.first_name = modified_first_name
+#    select_prospect.last_name = modified_last_name
+#    select_prospect.phone_cell = modified_phone_cell
+#    db.session.commit
+#    return True
 
-def modify_client(current_user, first_name, last_name, modified_first_name, modified_last_name, modified_phone_cell):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    select_client = Clients.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
-    select_client.first_name = modified_first_name
-    select_client.last_name = modified_last_name
-    select_client.phone_cell = modified_phone_cell
-    db.session.commit
-    return True
+#FOR NOW, THE MODIFY_CLIENT IS WRITTEN INTO THE ROUTE
+#def modify_client(current_user, first_name, last_name, modified_first_name, modified_last_name, modified_phone_cell):
+#    currentuser = User.query.filter_by(username=current_user.username).first()
+#    account_pk = currentuser.id
+#    select_client = Clients.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
+#    select_client.first_name = modified_first_name
+#    select_client.last_name = modified_last_name
+#    select_client.phone_cell = modified_phone_cell
+#    db.session.commit
+#    return True
 
  
 def select_prospect(current_user, first_name, last_name):

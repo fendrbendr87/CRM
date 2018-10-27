@@ -2,7 +2,7 @@ from app import app, db
 from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddProspectForm, AddClientForm, ModifyProspectForm
 from app.models import User, Prospects, Clients
 from app.email import send_password_reset_email
-from app.queryfunc import create_prospect, create_client, edit_prospect, get_prospects, get_clients, modify_prospect, modify_client, select_prospect, upgrade_prospect_client
+from app.queryfunc import create_prospect, create_client, edit_prospect, get_prospects, get_clients, upgrade_prospect_client
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -32,10 +32,14 @@ def view_prospect(prospect_id):
     currentuser = User.query.filter_by(username=current_user.username).first()
     account_pk = currentuser.id
     select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, id=prospect_id).first()
-    form = ModifyProspectForm()
-    form.modified_first_name.data = select_prospect.first_name
-    form.modified_last_name.data = select_prospect.last_name
-    form.modified_phone_cell.data = select_prospect.phone_cell
+    form = ModifyProspectForm(modified_first_name=select_prospect.first_name, modified_last_name=select_prospect.last_name, modified_phone_cell=select_prospect.phone_cell)
+    if form.validate_on_submit():
+        select_prospect.first_name=form.modified_first_name.data
+        select_prospect.last_name=form.modified_last_name.data
+        select_prospect.phone_cell=form.modified_phone_cell.data
+        db.session.commit()
+        flash('Your Prospect Information has been modified.')
+        return redirect(url_for('prospects'))
     return render_template('view_prospect.html', title = 'View Prospect', select_prospect=select_prospect, form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
