@@ -3,7 +3,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from time import time
 import jwt
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
+admin = Admin(app)
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -57,6 +60,11 @@ class Clients(db.Model):
     user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
     def __repr__(self):
         return '<Prospects> first_name: {}, last_name: {}, phone_cell: {}, notes: {}'.format(self.first_name, self.last_name, self.phone_cell, self.notes)
+
+admin.add_view(ModelView(User, db.session))
+admin.add_view(ModelView(Prospects, db.session))
+admin.add_view(ModelView(Clients, db.session))
+
 
 @login.user_loader
 def load_user(id):

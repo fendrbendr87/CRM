@@ -8,6 +8,8 @@ import os
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail
+#from flask_admin import Admin
+#from flask_admin.contrib.sqla import ModelView
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -17,6 +19,8 @@ login = LoginManager(app)
 login.login_view = 'login'
 bootstrap = Bootstrap(app)
 mail = Mail(app)
+#admin = Admin(app)
+
 
 from app import routes, models, errors
 
