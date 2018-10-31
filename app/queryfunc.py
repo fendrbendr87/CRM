@@ -77,3 +77,12 @@ def upgrade_prospect_client(current_user, first_name, last_name, phone_cell):
     select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name, phone_cell=phone_cell).first()
     #FINISH THIS
 
+def search_names(current_user, search_entry):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    client_first_names=Clients.query.filter_by(user_account_pk=account_pk).filter(Clients.first_name.contains(search_entry)).all()
+    client_last_names=Clients.query.filter_by(user_account_pk=account_pk).filter(Clients.last_name.contains(search_entry)).all()
+    prospect_first_names=Prospects.query.filter_by(user_account_pk=account_pk).filter(Prospects.first_name.contains(search_entry)).all()
+    prospect_last_names=Prospects.query.filter_by(user_account_pk=account_pk).filter(Prospects.last_name.contains(search_entry)).all()
+    results_list=client_first_names+client_last_names+prospect_first_names+prospect_last_names
+    return results_list

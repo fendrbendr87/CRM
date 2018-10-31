@@ -50,9 +50,12 @@ class ModifyProspectForm(FlaskForm):
     modified_first_name = StringField('First Name', validators=[DataRequired()])
     modified_last_name = StringField('Last Name', validators=[DataRequired()])
     modified_phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
-    modified_notes = StringField('Notes', validators=[DataRequired()])
+    modified_notes = StringField('Notes')
     submit = SubmitField('Update Prospect Information')
 
+class SearchClientForm(FlaskForm):
+    first_last = StringField('First or Last Name', validators=[DataRequired()])
+    submit = SubmitField('Search for Prospect/Client')
 
 class AddClientForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
@@ -64,5 +67,5 @@ class ModifyClientForm(FlaskForm):
     modified_first_name = StringField('First Name', validators=[DataRequired()])
     modified_last_name = StringField('Last Name', validators=[DataRequired()])
     modified_phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
-    modified_notes = StringField('Notes', validators=[DataRequired()])
+    modified_notes = StringField('Notes')
     submit = SubmitField('Update Client Information')

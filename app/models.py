@@ -61,6 +61,9 @@ class Clients(db.Model):
     def __repr__(self):
         return '<Prospects> first_name: {}, last_name: {}, phone_cell: {}, notes: {}'.format(self.first_name, self.last_name, self.phone_cell, self.notes)
 
+
+
+
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Prospects, db.session))
 admin.add_view(ModelView(Clients, db.session))

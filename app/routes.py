@@ -1,8 +1,8 @@
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddProspectForm, AddClientForm, ModifyProspectForm, ModifyClientForm
+from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddProspectForm, AddClientForm, ModifyProspectForm, ModifyClientForm, SearchClientForm
 from app.models import User, Prospects, Clients
 from app.email import send_password_reset_email
-from app.queryfunc import create_prospect, create_client, edit_prospect, get_prospects, get_clients, upgrade_prospect_client
+from app.queryfunc import create_prospect, create_client, edit_prospect, get_prospects, get_clients, upgrade_prospect_client, search_names
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -11,6 +11,7 @@ import datetime
 from bokeh.plotting import figure, show, output_file
 from bokeh.embed import components
 from bokeh.resources import CDN
+
 
 @app.route('/')
 @app.route('/index')
@@ -27,7 +28,7 @@ def index():
 
     start=datetime.datetime(2018,1,1)
     end=datetime.datetime(2018,10,29)
-    df = data.DataReader(name="NFLX", data_source="yahoo", start=start, end=end)
+    df = data.DataReader(name="JPM", data_source="yahoo", start=start, end=end)
     df["Status"]=[inc_dec(c,o) for c, o in zip(df.Close, df.Open)]
     df["Middle"]=(df.Open+df.Close)/2
     df["Height"]=abs(df.Close-df.Open)
@@ -45,13 +46,35 @@ def index():
     cdn_css=CDN.css_files
     return render_template("index.html", title='Index', script1=script1, div1=div1, cdn_js=cdn_js[0], cdn_css=cdn_css[0])
 
-@app.route('/listings', methods=['GET', 'POST'])
+@app.route('/search_client', methods=['GET', 'POST'])
+@login_required
+def search_client():
+    form = SearchClientForm()
+    if form.validate_on_submit():
+        search_entry = form.first_last.data
+        return redirect('/search_result/{}'.format(search_entry))
+    return render_template("search_client.html", title='Search for Prospect/Client', form=form)
+
+@app.route('/search_result/<search_entry>', methods=['GET', 'POST'])
+@login_required
+def search_result(search_entry):
+    #current_holding_shares = get_holding(current_user=current_user, ticker_symbol=ticker_symbol)
+    #tran_history = get_specific_orders(current_user=current_user, ticker_symbol=ticker_symbol)
+    #current_price = quote(ticker_symbol)
+    #if current_holding_shares:
+    #    current_value = current_price * current_holding_shares
+    #else:
+    #    current_value = 0
+    searchresult=search_names(current_user, search_entry)
+    return render_template("search_result.html", title="Search Result", search_entry=search_entry, searchresult=searchresult)
+
+@app.route('/listings', methods=['GET'])
 @login_required
 def listings():
     all_clients = get_clients(current_user=current_user)
     return render_template('listings.html', title='Listings', all_clients=all_clients)
 
-@app.route('/prospects', methods=['GET', 'POST'])
+@app.route('/prospects', methods=['GET'])
 @login_required
 def prospects():
     all_prospects = get_prospects(current_user=current_user)
@@ -63,7 +86,7 @@ def view_prospect(prospect_id):
     currentuser = User.query.filter_by(username=current_user.username).first()
     account_pk = currentuser.id
     select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, id=prospect_id).first()
-    form = ModifyProspectForm(modified_first_name=select_prospect.first_name, modified_last_name=select_prospect.last_name, modified_phone_cell=select_prospect.phone_cell, notes=select_prospect.notes)
+    form = ModifyProspectForm(modified_first_name=select_prospect.first_name, modified_last_name=select_prospect.last_name, modified_phone_cell=select_prospect.phone_cell, modified_notes=select_prospect.notes)
     if form.validate_on_submit():
         select_prospect.first_name=form.modified_first_name.data
         select_prospect.last_name=form.modified_last_name.data
