@@ -1,4 +1,4 @@
-2018-10-25 20:36:21,904 ERROR: Exception on /view_prospect/1 [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-10-30 20:38:49,216 ERROR: Exception on /index [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,107 +14,106 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/routes.py", line 36, in view_prospect
-    form.first_name.data = "Test this out"
-AttributeError: 'ModifyProspectForm' object has no attribute 'first_name'
-2018-10-25 20:36:50,944 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
-2018-10-25 20:38:00,795 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
-2018-10-25 20:38:41,538 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
-2018-10-25 20:39:36,551 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
-2018-10-25 20:39:58,052 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
-2018-10-25 20:40:21,636 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
-2018-10-25 20:41:44,349 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:49]
-2018-10-26 20:44:16,707 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 20:44:28,531 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 21:31:41,207 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 21:32:48,878 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 21:33:32,854 INFO: ReDefined CRM Startup [in app/__init__.py:49]
-2018-10-26 21:40:01,737 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 21:41:36,512 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 21:49:35,374 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 21:52:38,109 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 21:53:29,736 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 21:54:07,587 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 21:55:03,512 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 21:58:06,987 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:03:32,989 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:18:19,933 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:18:44,674 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:18:54,393 ERROR: Exception on /view_client/1 [POST] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/routes.py", line 58, in view_client
-    return redirect(url_for('clients'))
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/home/gene/.local/lib/python2.7/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-BuildError: Could not build url for endpoint 'clients'. Did you mean 'add_client' instead?
-2018-10-26 22:21:46,875 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:30:51,139 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:32:45,028 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:33:07,945 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:35:35,708 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:35:36,330 ERROR: Exception on /view_prospect/1 [GET] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/routes.py", line 43, in view_prospect
-    return render_template('view_prospect.html', title = 'View Prospect', select_prospect=select_prospect, form=form)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 135, in render_template
+  File "/mnt/c/Users/GM/Desktop/CRM/app/routes.py", line 47, in index
+    return render_template("index.html", title='Index', script1=script1, div1=div1, cdn_js=cdn_js[0], cdn_css=cdn_css[0])
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 117, in _render
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
     rv = template.render(context)
-  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
     return self.environment.handle_exception(exc_info, True)
-  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/view_prospect.html", line 2, in top-level template code
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/index.html", line 2, in top-level template code
     {% import 'bootstrap/wtf.html' as wtf %}
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/base.html", line 1, in top-level template code
+  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
-  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
     {% block doc -%}
-  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
     {%- block html %}
-  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
     {% block body -%}
-  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/base.html", line 52, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/templates/view_prospect.html", line 17, in block "app_content"
-    <a href="{{ url_for(prospects) }}"><button id="listButton" type="button" class="btn btn-success">Upgrade Prospect</button></a>
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/helpers.py", line 305, in url_for
-    if endpoint[:1] == '.':
-UndefinedError: 'prospects' is undefined
-2018-10-26 22:35:59,182 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:36:42,856 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:37:51,919 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:38:27,236 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
-2018-10-26 22:39:01,097 INFO: ReDefined CRM Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/CRM/app/__init__.py:49]
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
+    {% block navbar %}
+  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 39, in block "navbar"
+    <button type="submit" class="btn btn-default" href="{{ url_for('search_result/input') }}">Search</button>
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'search_result/input'. Did you mean 'search_result' instead?
+2018-10-30 20:39:32,521 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-10-30 20:40:27,976 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-10-30 20:43:05,918 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-10-30 20:43:57,999 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-10-30 20:44:45,550 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-10-30 20:48:31,302 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-10-30 20:49:13,448 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-10-30 20:49:39,349 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-10-30 20:49:41,433 ERROR: Exception on /search_client [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/GM/Desktop/CRM/app/routes.py", line 56, in search_client
+    return render_template("search_client.html", title='Search for Prospect/Client', form=form)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/search_client.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
+    {% block navbar %}
+  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 35, in block "navbar"
+    <form class="navbar-form navbar-left" action="{{ url_for('search_client/av') }}">
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'search_client/av'. Did you mean 'search_client' instead?
+2018-10-30 20:49:55,881 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]

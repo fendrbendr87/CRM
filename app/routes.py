@@ -52,19 +52,25 @@ def search_client():
     form = SearchClientForm()
     if form.validate_on_submit():
         search_entry = form.first_last.data
+        #search_entry="test string"
         return redirect('/search_result/{}'.format(search_entry))
     return render_template("search_client.html", title='Search for Prospect/Client', form=form)
+
+@app.route('/search_clientt', methods=['GET', 'POST'])
+@login_required
+def search_clientt():
+    # form = SearchClientForm()
+    if request.method == "POST":
+        # search_entry = form.first_last.data
+        # return(str(request.form))
+        search_string = request.form.get('search_string', '')
+        return redirect(url_for('search_result', search_entry=search_string))
+    return render_template("search_clientt.html", title='Search for Prospect/Client', form=form)
+
 
 @app.route('/search_result/<search_entry>', methods=['GET', 'POST'])
 @login_required
 def search_result(search_entry):
-    #current_holding_shares = get_holding(current_user=current_user, ticker_symbol=ticker_symbol)
-    #tran_history = get_specific_orders(current_user=current_user, ticker_symbol=ticker_symbol)
-    #current_price = quote(ticker_symbol)
-    #if current_holding_shares:
-    #    current_value = current_price * current_holding_shares
-    #else:
-    #    current_value = 0
     searchresult=search_names(current_user, search_entry)
     return render_template("search_result.html", title="Search Result", search_entry=search_entry, searchresult=searchresult)
 
