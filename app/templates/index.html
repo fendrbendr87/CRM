@@ -2,11 +2,6 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-<link rel="stylesheet" href= {{ cdn_css | safe }} type="text/css" />
-<script type="text/javascript" src={{ cdn_js | safe }}></script>
-
     <h1>Hello, {{ current_user.username }}!</h1>
     <div><p><b>Welcome to your CRM!</b></p></div>
-{{ script1 | safe }}
-{{ div1 | safe }}
 {% endblock %}

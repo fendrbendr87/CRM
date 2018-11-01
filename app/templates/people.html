@@ -4,11 +4,10 @@
 {% block app_content %}
     <h1>Hello, {{ current_user.username }}!</h1>
     <div class="btn-group">
-        <button type="button" class="btn btn-info"><a href="{{ url_for('add_prospect') }}">Add Prospect</a></button>
-        <button type="button" class="btn btn-success"><a href="{{ url_for('add_client') }}">Add Client</a></button>
+        <button type="button" class="btn btn-info"><a href="{{ url_for('add_people') }}">Add Person</a></button>
     </div>
     
-    <div><p><b>Here are your current listings:</b></p></div>
+    <div><p><b>Here are your current People:</b></p></div>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
@@ -18,9 +17,9 @@
                     <th>Address</th>
                 </tr>
             </thead>
-            {% for everyone in all_clients %}
+            {% for everyone in all_people %}
             <TR>
-                <TD class="active"><a href="{{ url_for('view_client', client_id=everyone.id) }}">{{ everyone.first_name }}  {{ everyone.last_name }}</a></TD>
+                <TD class="active"><a href="{{ url_for('view_people', people_id=everyone.id) }}">{{ everyone.first_name }}  {{ everyone.last_name }}</a></TD>
                 <TD class="active">{{ everyone.phone_cell }}</TD>
             </TR>
             {% endfor %}

@@ -13,7 +13,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    Prospects=db.relationship('Prospects', backref='leads', lazy='dynamic')
+    People=db.relationship('People', backref='leads', lazy='dynamic')
     Clients=db.relationship('Clients', backref='listings', lazy='dynamic')
 
     def __repr__(self):
@@ -40,16 +40,18 @@ class User(UserMixin, db.Model):
         return User.query.get(id)
 
 #WHENEVER YOU EDIT THE MODELS, MAKE SURE YOU ADD THE NEW FIELDS TO THE FORMS YOU WILL BE PASSING BACK TO THE ROUTE.PY!
-class Prospects(db.Model):
+class People(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name=db.Column(db.String(20))
     last_name=db.Column(db.String(20))
     phone_cell=db.Column(db.Integer)
+    ptype=db.Column(db.String(6))
+    pstatus=db.Column(db.String(7))
     notes=db.Column(db.String(140))
     user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Prospects> first_name: {}, last_name: {}, phone_cell: {}, notes: {}'.format(self.first_name, self.last_name, self.phone_cell, self.notes)
+        return '<People> first_name: {}, last_name: {}, phone_cell: {}, ptype: {}, pstatus: {}, notes: {}'.format(self.first_name, self.last_name, self.phone_cell, self.ptype, self.pstatus, self.notes)
 
 class Clients(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -59,14 +61,14 @@ class Clients(db.Model):
     notes=db.Column(db.String(140))
     user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
     def __repr__(self):
-        return '<Prospects> first_name: {}, last_name: {}, phone_cell: {}, notes: {}'.format(self.first_name, self.last_name, self.phone_cell, self.notes)
+        return '<Clients> first_name: {}, last_name: {}, phone_cell: {}, notes: {}'.format(self.first_name, self.last_name, self.phone_cell, self.notes)
 
 
 
 
-admin.add_view(ModelView(User, db.session))
-admin.add_view(ModelView(Prospects, db.session))
-admin.add_view(ModelView(Clients, db.session))
+#admin.add_view(ModelView(User, db.session))
+#admin.add_view(ModelView(Prospects, db.session))
+#admin.add_view(ModelView(Clients, db.session))
 
 
 @login.user_loader

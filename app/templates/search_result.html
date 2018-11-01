@@ -3,10 +3,7 @@
 
 {% block app_content %}
     <h1>Hello, {{ current_user.username }}!</h1>
-    <div class="btn-group">
-        <button type="button" class="btn btn-info"><a href="{{ url_for('add_prospect') }}">Add Prospect</a></button>
-        <button type="button" class="btn btn-success"><a href="{{ url_for('add_client') }}">Add Client</a></button>
-    </div>
+
     
     <div><p><b>Here is your search result for: {{ search_entry }}</b></p></div>
     <div class="table-responsive">
@@ -20,7 +17,7 @@
             </thead>
             {% for everyone in searchresult %}
             <TR>
-                <TD class="active"><a href="{{ url_for('view_prospect', prospect_id=everyone.id) }}">{{ everyone.first_name }}  {{ everyone.last_name }}</a></TD>
+                <TD class="active"><a href="{{ url_for('view_people', people_id=everyone.id) }}">{{ everyone.first_name }}  {{ everyone.last_name }}</a></TD>
                 <TD class="active">{{ everyone.phone_cell }}</TD>
             </TR>
             {% endfor %}

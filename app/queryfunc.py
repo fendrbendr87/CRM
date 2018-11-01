@@ -1,45 +1,32 @@
 from app import app, db
-from app.models import User, Prospects, Clients
+from app.models import User, People, Clients
 
 
 
-def create_prospect(current_user, first_name, last_name, phone_cell):
+def create_people(current_user, first_name, last_name, phone_cell, ptype, pstatus, notes):
     currentuser = User.query.filter_by(username=current_user.username).first()
     user_account_pk = currentuser.id
-    new_prospect = Prospects(first_name=first_name, last_name=last_name, phone_cell=phone_cell, user_account_pk=user_account_pk)
-    db.session.add(new_prospect)
+    new_people = People(first_name=first_name, last_name=last_name, 
+            phone_cell=phone_cell, ptype=ptype, pstatus=pstatus, notes=notes, user_account_pk=user_account_pk)
+    db.session.add(new_people)
     db.session.commit()
     return True
 
 
-
-def create_client(current_user, first_name, last_name, phone_cell):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    user_account_pk = currentuser.id
-    new_client = Clients(first_name=first_name, last_name=last_name, phone_cell=phone_cell, user_account_pk=user_account_pk)
-    db.session.add(new_client)
-    db.session.commit()
-    return True
-    
 
 #for loggin purposes, you will have to add some sort of tracking as to which user edits
-#which information for which prospects
-def edit_prospect(current_user, first_name, last_name, phone_cell):
+#which information for which people
+def edit_people(current_user, first_name, last_name, phone_cell):
     currentuser = User.query.filter_by(username=current_user.username).first()
     user_account_pk = currentuser.id
     #TODO FINISH THIS
 
-def get_prospects(current_user):
+def get_people(current_user):
     currentuser = User.query.filter_by(username=current_user.username).first()
     account_pk = currentuser.id
-    all_prospects=Prospects.query.filter_by(user_account_pk=account_pk).all()
-    return all_prospects
+    all_people=People.query.filter_by(user_account_pk=account_pk).all()
+    return all_people
 
-def get_clients(current_user):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    all_clients=Clients.query.filter_by(user_account_pk=account_pk).all()
-    return all_clients
 
 #FOR NOW, THE MODIFY_PROSPECT IS WRITTEN INTO THE ROUTE
 #def modify_prospect(current_user, first_name, last_name, modified_first_name, modified_last_name, modified_phone_cell):
@@ -71,18 +58,13 @@ def get_clients(current_user):
 #    return prospect
 #    #TODO FINISH THIS FUNCTION TO RETURN CURRENT PROSPECT!!
 
-def upgrade_prospect_client(current_user, first_name, last_name, phone_cell):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    select_prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name, phone_cell=phone_cell).first()
-    #FINISH THIS
 
 def search_names(current_user, search_entry):
     currentuser = User.query.filter_by(username=current_user.username).first()
     account_pk = currentuser.id
     client_first_names=Clients.query.filter_by(user_account_pk=account_pk).filter(Clients.first_name.contains(search_entry)).all()
     client_last_names=Clients.query.filter_by(user_account_pk=account_pk).filter(Clients.last_name.contains(search_entry)).all()
-    prospect_first_names=Prospects.query.filter_by(user_account_pk=account_pk).filter(Prospects.first_name.contains(search_entry)).all()
-    prospect_last_names=Prospects.query.filter_by(user_account_pk=account_pk).filter(Prospects.last_name.contains(search_entry)).all()
-    results_list=client_first_names+client_last_names+prospect_first_names+prospect_last_names
+    people_first_names=People.query.filter_by(user_account_pk=account_pk).filter(People.first_name.contains(search_entry)).all()
+    people_last_names=People.query.filter_by(user_account_pk=account_pk).filter(People.last_name.contains(search_entry)).all()
+    results_list=client_first_names+client_last_names+people_first_names+people_last_names
     return results_list

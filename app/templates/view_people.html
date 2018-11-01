@@ -14,21 +14,20 @@
         <div class="sampleFields">
             <div class="fieldControl">
                 <div class="btn-group">
-                    <button id="listButton" type="button" class="btn btn-warning">Modify Prospect</button>
-                    <a href="{{ url_for('prospects') }}"><button id="listButton" type="button" class="btn btn-success">Upgrade Prospect</button></a>
+                    <button id="listButton" type="button" class="btn btn-warning">Modify Person</button>
                 </div>
             </div>
-            <h2>Prospect Information:</h2>
-            <div><p>First Name: {{ select_prospect.first_name }}</p></div>
-            <div><p>Last Name: {{ select_prospect.last_name }}</p></div>
-            <div><p>Cell Number: {{ select_prospect.phone_cell }}</p></div>
-            <div><p>Notes: {{ select_prospect.notes }}</p></div>
+            <h2>Person's Information:</h2>
+            <div><p>First Name: {{ select_people.first_name }}</p></div>
+            <div><p>Last Name: {{ select_people.last_name }}</p></div>
+            <div><p>Cell Number: {{ select_people.phone_cell }}</p></div>
+            <div><p>Notes: {{ select_people.notes }}</p></div>
         </div>
         <div class="sampleFields hidden">
             <div class="fieldControl">
                 <button id="formButton" type="button" class="btn btn-info">Cancel Modify</button>
             </div>
-            <h2>Modify Prospect Information:</h2>
+            <h2>Modify Person's Information:</h2>
             <div class="row">
                     <div class="col-md-4">
                         {{ wtf.quick_form(form) }}

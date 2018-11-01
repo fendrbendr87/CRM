@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, SelectField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Prospects, Clients
+from app.models import User, People, Clients
 from app import app, db
 
 
@@ -40,32 +40,24 @@ class ResetPasswordForm(FlaskForm):
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Request Password Reset')
 
-class AddProspectForm(FlaskForm):
+class AddPeopleForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
     phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
-    submit = SubmitField('Add Prospect')
+    ptype = SelectField(
+        'Client Type',
+        choices=[('buyer', 'Buyer'), ('seller', 'Seller')], validators=[DataRequired()])
+    pstatus = SelectField('Client Status', choices=[('prospect', 'Prospect'), ('client', 'Client')], validators=[DataRequired()])
+    notes = StringField('Notes')
+    submit = SubmitField('Add Person')
 
-class ModifyProspectForm(FlaskForm):
+class ModifyPeopleForm(FlaskForm):
     modified_first_name = StringField('First Name', validators=[DataRequired()])
     modified_last_name = StringField('Last Name', validators=[DataRequired()])
     modified_phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
     modified_notes = StringField('Notes')
-    submit = SubmitField('Update Prospect Information')
+    submit = SubmitField('Update Person\'s Information')
 
-class SearchClientForm(FlaskForm):
+class SearchPeopleForm(FlaskForm):
     first_last = StringField('First or Last Name', validators=[DataRequired()])
-    submit = SubmitField('Search for Prospect/Client')
-
-class AddClientForm(FlaskForm):
-    first_name = StringField('First Name', validators=[DataRequired()])
-    last_name = StringField('Last Name', validators=[DataRequired()])
-    phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
-    submit = SubmitField('Add Client')
-
-class ModifyClientForm(FlaskForm):
-    modified_first_name = StringField('First Name', validators=[DataRequired()])
-    modified_last_name = StringField('Last Name', validators=[DataRequired()])
-    modified_phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
-    modified_notes = StringField('Notes')
-    submit = SubmitField('Update Client Information')
+    submit = SubmitField('Search for Person')
