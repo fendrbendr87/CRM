@@ -12,7 +12,41 @@ def create_people(current_user, first_name, last_name, phone_cell, ptype, pstatu
     db.session.commit()
     return True
 
+def view_buyers(current_user):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    all_buyers=People.query.filter_by(user_account_pk=account_pk, ptype="buyer").all()
+    return all_buyers
 
+def view_buyer_prospects(current_user):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    buyerprospects=People.query.filter_by(user_account_pk=account_pk, ptype="buyer", pstatus="prospect").all()
+    return buyerprospects
+
+def view_buyer_clients(current_user):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    buyerclients=People.query.filter_by(user_account_pk=account_pk, ptype="buyer", pstatus="client").all()
+    return buyerclients
+
+def view_sellers(current_user):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    all_sellers=People.query.filter_by(user_account_pk=account_pk, ptype="seller").all()
+    return all_sellers
+
+def view_seller_prospects(current_user):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    sellerprospects=People.query.filter_by(user_account_pk=account_pk, ptype="seller", pstatus="prospect").all()
+    return sellerprospects
+
+def view_seller_clients(current_user):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    sellerclients=People.query.filter_by(user_account_pk=account_pk, ptype="seller", pstatus="client").all()
+    return sellerclients
 
 #for loggin purposes, you will have to add some sort of tracking as to which user edits
 #which information for which people

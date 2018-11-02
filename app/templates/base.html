@@ -18,13 +18,28 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a href="{{ url_for('index') }}">Home</a></li>
                     {% if current_user.is_anonymous %}
                     <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
                     <li><a href="{{ url_for('register') }}"><span class="glyphicon glyphicon-user"></span>Register</a></li>
                     {% else %}
-                    <li><a href="{{ url_for('people') }}">People</a></li>
-                    <form class="navbar-form navbar-left" method="post" action="{{ url_for('search_clientt') }}">
+                    <li><a href="{{ url_for('people') }}">All Contacts</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Buyers
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('buyer_prospects') }}">Prospects</a></li>
+                            <li><a href="{{ url_for('buyer_clients') }}">Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sellers
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('seller_prospects') }}">Prospects</a></li>
+                            <li><a href="{{ url_for('seller_clients') }}">Clients</a></li>
+                        </ul>
+                    </li>
+                    <form class="navbar-form navbar-left" method="post" action="{{ url_for('search_people') }}">
                         <div class="form-group">
                             <input type="text" name="search_string" class="form-control" placeholder="Search Persons Name">
                         </div>

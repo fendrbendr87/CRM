@@ -44,10 +44,10 @@ class AddPeopleForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
     phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
-    ptype = SelectField(
-        'Client Type',
-        choices=[('buyer', 'Buyer'), ('seller', 'Seller')], validators=[DataRequired()])
-    pstatus = SelectField('Client Status', choices=[('prospect', 'Prospect'), ('client', 'Client')], validators=[DataRequired()])
+    ptype = SelectField('Client Type',  choices=[('buyer', 'Buyer'), 
+        ('seller', 'Seller')], validators=[DataRequired()])
+    pstatus = SelectField('Client Status', choices=[('prospect', 'Prospect'), 
+        ('client', 'Client')], validators=[DataRequired()])
     notes = StringField('Notes')
     submit = SubmitField('Add Person')
 
@@ -55,6 +55,10 @@ class ModifyPeopleForm(FlaskForm):
     modified_first_name = StringField('First Name', validators=[DataRequired()])
     modified_last_name = StringField('Last Name', validators=[DataRequired()])
     modified_phone_cell = IntegerField('Cell Number', validators=[DataRequired()])
+    modified_ptype = SelectField('Client Type',  choices=[('buyer', 'Buyer'), 
+        ('seller', 'Seller')], validators=[DataRequired()])
+    modified_pstatus = SelectField('Client Status', choices=[('prospect', 'Prospect'), 
+        ('client', 'Client')], validators=[DataRequired()])
     modified_notes = StringField('Notes')
     submit = SubmitField('Update Person\'s Information')
 

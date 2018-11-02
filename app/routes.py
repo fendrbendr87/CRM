@@ -2,7 +2,7 @@ from app import app, db
 from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddPeopleForm, ModifyPeopleForm, SearchPeopleForm
 from app.models import User, People, Clients
 from app.email import send_password_reset_email
-from app.queryfunc import create_people, create_people, edit_people, get_people, search_names
+from app.queryfunc import create_people, create_people, edit_people, get_people, search_names, view_buyer_prospects, view_buyer_clients, view_seller_prospects, view_seller_clients
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -18,21 +18,10 @@ def index():
 @app.route('/search_people', methods=['GET', 'POST'])
 @login_required
 def search_people():
-    form = SearchPeopleForm()
-    if form.validate_on_submit():
-        search_entry = form.first_last.data
-        #search_entry="test string"
-        return redirect('/search_result/{}'.format(search_entry))
-    return render_template("search_people.html", title='Search for People', form=form)
-
-@app.route('/search_clientt', methods=['GET', 'POST'])
-@login_required
-def search_clientt():
     if request.method == "POST":
         search_string = request.form.get('search_string', '')
         return redirect(url_for('search_result', search_entry=search_string))
-    return render_template("search_clientt.html", title='Search for People')
-
+    return render_template("search_people.html", title='Search for People')
 
 @app.route('/search_result/<search_entry>', methods=['GET', 'POST'])
 @login_required
@@ -45,6 +34,30 @@ def search_result(search_entry):
 def people():
     all_people = get_people(current_user=current_user)
     return render_template('people.html', title='People', all_people=all_people)
+
+@app.route('/buyer_prospects', methods=['GET'])
+@login_required
+def buyer_prospects():
+    buyerprospects=view_buyer_prospects(current_user=current_user)
+    return render_template('buyer_prospects.html', title='Buyer Prospects', buyerprospects=buyerprospects)
+
+@app.route('/buyer_clients', methods=['GET'])
+@login_required
+def buyer_clients():
+    buyerclients=view_buyer_clients(current_user=current_user)
+    return render_template('buyer_clients.html', title='Buyer Clients', buyerclients=buyerclients)
+
+@app.route('/seller_prospects', methods=['GET'])
+@login_required
+def seller_prospects():
+    sellerprospects=view_seller_prospects(current_user=current_user)
+    return render_template('seller_prospects.html', title='Seller Prospects', sellerprospects=sellerprospects)
+
+@app.route('/seller_clients', methods=['GET'])
+@login_required
+def seller_clients():
+    sellerclients=view_seller_clients(current_user=current_user)
+    return render_template('seller_clients.html', title='Seller Clients', sellerclients=sellerclients)
 
 @app.route('/view_people/<people_id>', methods=['GET', 'POST'])
 @login_required
@@ -62,7 +75,6 @@ def view_people(people_id):
         flash('Your Persons Information has been modified.')
         return redirect(url_for('people'))
     return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form)
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
