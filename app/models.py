@@ -53,23 +53,9 @@ class People(db.Model):
     def __repr__(self):
         return '<People> first_name: {}, last_name: {}, phone_cell: {}, ptype: {}, pstatus: {}, notes: {}'.format(self.first_name, self.last_name, self.phone_cell, self.ptype, self.pstatus, self.notes)
 
-class Clients(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(20))
-    last_name = db.Column(db.String(20))
-    phone_cell = db.Column(db.Integer)
-    notes=db.Column(db.String(140))
-    user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
-    def __repr__(self):
-        return '<Clients> first_name: {}, last_name: {}, phone_cell: {}, notes: {}'.format(self.first_name, self.last_name, self.phone_cell, self.notes)
-
-
-
-
 #admin.add_view(ModelView(User, db.session))
 #admin.add_view(ModelView(Prospects, db.session))
 #admin.add_view(ModelView(Clients, db.session))
-
 
 @login.user_loader
 def load_user(id):
