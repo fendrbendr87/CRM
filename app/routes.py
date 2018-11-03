@@ -1,6 +1,6 @@
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddPeopleForm, ModifyPeopleForm, SearchPeopleForm
-from app.models import User, People, Clients
+from app.models import User, People
 from app.email import send_password_reset_email
 from app.queryfunc import create_people, create_people, edit_people, get_people, search_names, view_buyer_prospects, view_buyer_clients, view_seller_prospects, view_seller_clients
 from flask import render_template, flash, redirect, url_for, request

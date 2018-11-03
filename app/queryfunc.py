@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import User, People, Clients
+from app.models import User, People
 
 
 
@@ -96,9 +96,7 @@ def get_people(current_user):
 def search_names(current_user, search_entry):
     currentuser = User.query.filter_by(username=current_user.username).first()
     account_pk = currentuser.id
-    client_first_names=Clients.query.filter_by(user_account_pk=account_pk).filter(Clients.first_name.contains(search_entry)).all()
-    client_last_names=Clients.query.filter_by(user_account_pk=account_pk).filter(Clients.last_name.contains(search_entry)).all()
     people_first_names=People.query.filter_by(user_account_pk=account_pk).filter(People.first_name.contains(search_entry)).all()
     people_last_names=People.query.filter_by(user_account_pk=account_pk).filter(People.last_name.contains(search_entry)).all()
-    results_list=client_first_names+client_last_names+people_first_names+people_last_names
+    results_list=people_first_names+people_last_names
     return results_list
