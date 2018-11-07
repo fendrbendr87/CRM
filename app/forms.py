@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, SelectField
-from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, SelectField, TextAreaField
+from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, People
 from app import app, db
@@ -65,3 +65,7 @@ class ModifyPeopleForm(FlaskForm):
 class SearchPeopleForm(FlaskForm):
     first_last = StringField('First or Last Name', validators=[DataRequired()])
     submit = SubmitField('Search for Person')
+
+class AddProfileNotesForm(FlaskForm):
+    pnotes = TextAreaField('Add notes here', validators=[DataRequired(), Length(min=1, max=280)])
+    submit = SubmitField('Add Profile Notes')

@@ -61,6 +61,22 @@ def get_people(current_user):
     all_people=People.query.filter_by(user_account_pk=account_pk).all()
     return all_people
 
+#def add_people_notes(current_user, select_people, pnotes):
+    #currentuser = User.query.filter_by(username=current_user.username).first()
+    #IDENTIFY USER WITH USERACCOUNTPK
+    #user_account_pk = currentuser.id
+    #people_account_pk = select_people.id
+    #new_people_note = 
+    #pass
+
+
+def search_names(current_user, search_entry):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    people_first_names=People.query.filter_by(user_account_pk=account_pk).filter(People.first_name.contains(search_entry)).all()
+    people_last_names=People.query.filter_by(user_account_pk=account_pk).filter(People.last_name.contains(search_entry)).all()
+    results_list=people_first_names+people_last_names
+    return results_list
 
 #FOR NOW, THE MODIFY_PROSPECT IS WRITTEN INTO THE ROUTE
 #def modify_prospect(current_user, first_name, last_name, modified_first_name, modified_last_name, modified_phone_cell):
@@ -91,12 +107,3 @@ def get_people(current_user):
 #    prospect = Prospects.query.filter_by(user_account_pk=account_pk, first_name=first_name, last_name=last_name).first()
 #    return prospect
 #    #TODO FINISH THIS FUNCTION TO RETURN CURRENT PROSPECT!!
-
-
-def search_names(current_user, search_entry):
-    currentuser = User.query.filter_by(username=current_user.username).first()
-    account_pk = currentuser.id
-    people_first_names=People.query.filter_by(user_account_pk=account_pk).filter(People.first_name.contains(search_entry)).all()
-    people_last_names=People.query.filter_by(user_account_pk=account_pk).filter(People.last_name.contains(search_entry)).all()
-    results_list=people_first_names+people_last_names
-    return results_list

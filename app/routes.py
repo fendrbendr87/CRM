@@ -1,5 +1,5 @@
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddPeopleForm, ModifyPeopleForm, SearchPeopleForm
+from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddPeopleForm, ModifyPeopleForm, SearchPeopleForm, AddProfileNotesForm
 from app.models import User, People
 from app.email import send_password_reset_email
 from app.queryfunc import create_people, create_people, edit_people, get_people, search_names, view_buyer_prospects, view_buyer_clients, view_seller_prospects, view_seller_clients
@@ -65,7 +65,9 @@ def view_people(people_id):
     currentuser = User.query.filter_by(username=current_user.username).first()
     account_pk = currentuser.id
     select_people = People.query.filter_by(user_account_pk=account_pk, id=people_id).first()
+    user_account_pk = account_pk
     form = ModifyPeopleForm(modified_first_name=select_people.first_name, modified_last_name=select_people.last_name, modified_phone_cell=select_people.phone_cell, modified_notes=select_people.notes)
+    notes_form = AddProfileNotesForm()
     if form.validate_on_submit():
         select_people.first_name=form.modified_first_name.data
         select_people.last_name=form.modified_last_name.data
@@ -73,8 +75,12 @@ def view_people(people_id):
         select_people.notes=form.modified_notes.data
         db.session.commit()
         flash('Your Persons Information has been modified.')
-        return redirect(url_for('people'))
-    return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form)
+        return redirect(url_for('view_people', people_id=people_id))
+        #return redirect('/view_people/<people_id>')
+    if notes_form.validate_on_submit():
+        flash('You CLICKED IT')
+        #return redirect(url_for('/view_people/<people_id>'))
+    return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form, notes_form=notes_form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

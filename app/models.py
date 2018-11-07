@@ -13,8 +13,8 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    People=db.relationship('People', backref='leads', lazy='dynamic')
-    Clients=db.relationship('Clients', backref='listings', lazy='dynamic')
+    People=db.relationship('People', backref='people', lazy='dynamic')
+    ProfileNotes=db.relationship('ProfileNotes', backref='profilenotes', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -49,9 +49,19 @@ class People(db.Model):
     pstatus=db.Column(db.String(7))
     notes=db.Column(db.String(140))
     user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
+    ProfileNotes=db.relationship('ProfileNotes', backref='peopleprofilenotes', lazy='dynamic')
 
     def __repr__(self):
         return '<People> first_name: {}, last_name: {}, phone_cell: {}, ptype: {}, pstatus: {}, notes: {}'.format(self.first_name, self.last_name, self.phone_cell, self.ptype, self.pstatus, self.notes)
+
+class ProfileNotes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    pnotes=db.Column(db.String(280))
+    people_account_pk=db.Column(db.Integer, db.ForeignKey('people.id'))
+    user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return '<ProfileNotes> pnotes: {}'.format(self.pnotes)
 
 #admin.add_view(ModelView(User, db.session))
 #admin.add_view(ModelView(Prospects, db.session))
