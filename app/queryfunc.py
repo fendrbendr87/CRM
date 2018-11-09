@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import User, People
+from app.models import User, People, ProfileNotes
 
 
 
@@ -11,6 +11,20 @@ def create_people(current_user, first_name, last_name, phone_cell, ptype, pstatu
     db.session.add(new_people)
     db.session.commit()
     return True
+
+def add_profile_note(current_user, pnotes, people_account_pk):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    user_account_pk = currentuser.id
+    new_profile_note = ProfileNotes(pnotes=pnotes, people_account_pk=people_account_pk, user_account_pk=user_account_pk)
+    db.session.add(new_profile_note)
+    db.session.commit()
+    return True
+
+def view_profile_notes(current_user, people_account_pk):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    pnotes = ProfileNotes.query.filter_by(user_account_pk=account_pk, people_account_pk=people_account_pk).all()
+    return pnotes
 
 def view_buyers(current_user):
     currentuser = User.query.filter_by(username=current_user.username).first()
@@ -47,6 +61,8 @@ def view_seller_clients(current_user):
     account_pk = currentuser.id
     sellerclients=People.query.filter_by(user_account_pk=account_pk, ptype="seller", pstatus="client").all()
     return sellerclients
+
+
 
 #for loggin purposes, you will have to add some sort of tracking as to which user edits
 #which information for which people

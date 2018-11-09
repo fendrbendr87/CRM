@@ -2,6 +2,7 @@ from app import db, login, app
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from time import time
+from datetime import datetime
 import jwt
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
@@ -57,6 +58,7 @@ class People(db.Model):
 class ProfileNotes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     pnotes=db.Column(db.String(280))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     people_account_pk=db.Column(db.Integer, db.ForeignKey('people.id'))
     user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
 

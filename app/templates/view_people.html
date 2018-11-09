@@ -39,6 +39,14 @@
                 {{ wtf.quick_form(notes_form) }}
             </div>
         </div>
+        {% if viewpnotes %}
+            {% for all_notes in viewpnotes %}
+                <TR>
+                    <TD class="active">{{ all_notes.timestamp }}</TD>
+                    <TD class="active">{{ all_notes.pnotes }}</TD>
+                </TR>
+            {% endfor %}
+        {% endif %}
     </div>
 
     <script>

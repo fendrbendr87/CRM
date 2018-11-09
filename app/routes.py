@@ -2,7 +2,7 @@ from app import app, db
 from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddPeopleForm, ModifyPeopleForm, SearchPeopleForm, AddProfileNotesForm
 from app.models import User, People
 from app.email import send_password_reset_email
-from app.queryfunc import create_people, create_people, edit_people, get_people, search_names, view_buyer_prospects, view_buyer_clients, view_seller_prospects, view_seller_clients
+from app.queryfunc import create_people, create_people, edit_people, get_people, search_names, view_buyer_prospects, view_buyer_clients, view_seller_prospects, view_seller_clients, add_profile_note, view_profile_notes
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -66,21 +66,33 @@ def view_people(people_id):
     account_pk = currentuser.id
     select_people = People.query.filter_by(user_account_pk=account_pk, id=people_id).first()
     user_account_pk = account_pk
-    form = ModifyPeopleForm(modified_first_name=select_people.first_name, modified_last_name=select_people.last_name, modified_phone_cell=select_people.phone_cell, modified_notes=select_people.notes)
+    form = ModifyPeopleForm(modified_first_name=select_people.first_name, modified_last_name=select_people.last_name, 
+                modified_phone_cell=select_people.phone_cell, modified_notes=select_people.notes,
+                modified_ptype=select_people.ptype, modified_pstatus=select_people.pstatus)
     notes_form = AddProfileNotesForm()
+    #viewpnotes=view_profile_notes(current_user=current_user, people_account_pk=people_id)
     if form.validate_on_submit():
         select_people.first_name=form.modified_first_name.data
         select_people.last_name=form.modified_last_name.data
         select_people.phone_cell=form.modified_phone_cell.data
         select_people.notes=form.modified_notes.data
+        select_people.ptype=form.modified_ptype.data
+        select_people.pstatus=form.modified_pstatus.data
         db.session.commit()
         flash('Your Persons Information has been modified.')
         return redirect(url_for('view_people', people_id=people_id))
         #return redirect('/view_people/<people_id>')
     if notes_form.validate_on_submit():
-        flash('You CLICKED IT')
+        profile_note=notes_form.pnotes.data
+        profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id)
+        if profile_note_storage == True:
+            flash('Notes Added.')
+            return redirect(url_for('view_people', people_id=people_id))
+        else:
+            flash('Something is wrong, note not added.')
+        #flash('You CLICKED IT')
         #return redirect(url_for('/view_people/<people_id>'))
-    return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form, notes_form=notes_form)
+    return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form, notes_form=notes_form, viewpnotes=None)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
