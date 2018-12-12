@@ -93,3 +93,10 @@ Traceback (most recent call last):
     return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form, notes_form=notes_form, viewpnotes=viewpnotes)
 NameError: name 'viewpnotes' is not defined
 2018-11-08 21:01:28,563 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-12-11 19:59:29,379 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-12-11 20:10:07,875 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-12-11 20:23:11,821 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-12-11 20:26:21,027 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-12-11 20:31:22,217 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-12-11 20:34:06,649 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-12-11 20:34:59,164 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]

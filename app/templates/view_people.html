@@ -42,8 +42,10 @@
         {% if viewpnotes %}
             {% for all_notes in viewpnotes %}
                 <TR>
-                    <TD class="active">{{ all_notes.timestamp }}</TD>
-                    <TD class="active">{{ all_notes.pnotes }}</TD>
+                    <div>
+                        <TD class="active">{{ all_notes.timestamp }}</TD>
+                        <TD class="active">{{ all_notes.pnotes }}</TD>
+                    </div>
                 </TR>
             {% endfor %}
         {% endif %}

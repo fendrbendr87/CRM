@@ -66,11 +66,20 @@ def view_people(people_id):
     account_pk = currentuser.id
     select_people = People.query.filter_by(user_account_pk=account_pk, id=people_id).first()
     user_account_pk = account_pk
+    pnotes=view_profile_notes(current_user=current_user, people_account_pk=people_id)
     form = ModifyPeopleForm(modified_first_name=select_people.first_name, modified_last_name=select_people.last_name, 
                 modified_phone_cell=select_people.phone_cell, modified_notes=select_people.notes,
                 modified_ptype=select_people.ptype, modified_pstatus=select_people.pstatus)
     notes_form = AddProfileNotesForm()
     #viewpnotes=view_profile_notes(current_user=current_user, people_account_pk=people_id)
+    if notes_form.validate_on_submit():
+        profile_note=notes_form.pnotes.data
+        profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id)
+        if profile_note_storage == True:
+            flash('Notes Added.')
+            return redirect(url_for('view_people', people_id=people_id))
+        else:
+            flash('Something is wrong, note not added.')
     if form.validate_on_submit():
         select_people.first_name=form.modified_first_name.data
         select_people.last_name=form.modified_last_name.data
@@ -82,17 +91,10 @@ def view_people(people_id):
         flash('Your Persons Information has been modified.')
         return redirect(url_for('view_people', people_id=people_id))
         #return redirect('/view_people/<people_id>')
-    if notes_form.validate_on_submit():
-        profile_note=notes_form.pnotes.data
-        profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id)
-        if profile_note_storage == True:
-            flash('Notes Added.')
-            return redirect(url_for('view_people', people_id=people_id))
-        else:
-            flash('Something is wrong, note not added.')
+
         #flash('You CLICKED IT')
         #return redirect(url_for('/view_people/<people_id>'))
-    return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form, notes_form=notes_form, viewpnotes=None)
+    return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form, notes_form=notes_form, viewpnotes=pnotes)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
