@@ -6,6 +6,10 @@ from app.queryfunc import create_people, create_people, edit_people, get_people,
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
+from flask_weasyprint import HTML, render_pdf
+import datetime
+
+now=datetime.datetime.now()
 
 
 
@@ -74,7 +78,7 @@ def view_people(people_id):
     #viewpnotes=view_profile_notes(current_user=current_user, people_account_pk=people_id)
     if notes_form.validate_on_submit():
         profile_note=notes_form.pnotes.data
-        profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id)
+        profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id, people_id=people_id)
         if profile_note_storage == True:
             flash('Notes Added.')
             return redirect(url_for('view_people', people_id=people_id))
@@ -172,3 +176,11 @@ def reset_password(token):
         flash('Your password has been reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
+
+@app.route('/hello_<fname>_<lname>.pdf')
+def hello_pdf(fname, lname):
+    #currentuser = User.query.filter_by(username=current_user.username).first()
+    #account_pk = currentuser.id
+    #select_people = People.query.filter_by(user_account_pk=account_pk, id=people_id).first()
+    html = render_template('peoplepdf.html', fname=fname, lname=lname, day=now.day, month=now.month, year=now.year, endyear=now.year+1)
+    return render_pdf(HTML(string=html))

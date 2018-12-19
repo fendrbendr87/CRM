@@ -1,4 +1,13 @@
-2018-11-01 19:50:07,328 ERROR: Exception on / [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-11-08 20:41:56,782 ERROR: Exception on / [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,103 +21,52 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/routes.py", line 16, in index
-    return render_template("index.html", title='Index')
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/utils.py", line 259, in decorated_view
+    elif not current_user.is_authenticated:
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
+    current_app.login_manager._load_user()
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
+    return self.reload_user()
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
+    user = self.user_callback(user_id)
+  File "/mnt/c/Users/GM/Desktop/CRM/app/models.py", line 74, in load_user
+    return User.query.get(int(id))
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 924, in get
+    ident, loading.load_on_pk_identity)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 1007, in _get_impl
+    return db_load_fn(self, primary_key_identity)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 250, in load_on_pk_identity
+    return q.one()
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2954, in one
+    ret = self.one_or_none()
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2924, in one_or_none
+    ret = list(self)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2995, in __iter__
+    return self._execute_and_instances(context)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3018, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
     raise value.with_traceback(tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
-    {% block navbar %}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 31, in block "navbar"
-    <li><a href="{{ url_for('listings') }}">Listings</a></li>
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'listings'. Did you mean 'login' instead?
-2018-11-01 19:50:59,649 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
-2018-11-01 19:51:03,404 ERROR: Exception on /people [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/routes.py", line 47, in people
-    return render_template('people.html', title='People', all_people=all_people)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/people.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 51, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/people.html", line 8, in block "app_content"
-    <button type="button" class="btn btn-success"><a href="{{ url_for('add_client') }}">Add Client</a></button>
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'add_client'. Did you mean 'search_clientt' instead?
-2018-11-01 19:51:38,483 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user [SQL: 'SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash \nFROM user \nWHERE user.id = ?'] [parameters: (1,)] (Background on this error at: http://sqlalche.me/e/e3q8)

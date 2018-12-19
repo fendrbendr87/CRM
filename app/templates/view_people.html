@@ -15,6 +15,8 @@
             <div class="fieldControl">
                 <div class="btn-group">
                     <button id="listButton" type="button" class="btn btn-warning">Modify Person</button>
+                    
+                    <a href="{{ url_for('hello_pdf', fname=select_people.first_name, lname=select_people.last_name, ) }}" class="btn btn-success">Print Listing Agreement</a>
                 </div>
             </div>
             <h2>Person's Information:</h2>
