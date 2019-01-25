@@ -105,8 +105,6 @@ def people_notes(people_id):
     select_people = People.query.filter_by(user_account_pk=account_pk, id=people_id).first()
     notes_form = AddProfileNotesForm()
     if notes_form.validate_on_submit():
-    #if notes_form.submit2.data and notes_form.validate():
-    #if notes_form.validate_on_submit() and notes_form.submit2.data:
         profile_note=notes_form.pnotes.data
         profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id)
         if profile_note_storage == True:
@@ -232,6 +230,6 @@ def hello_pdf(fname, lname):
     html = render_template('peoplepdf.html', fname=fname, lname=lname, 
     people_house_number=select_people.house_number, people_street_name=select_people.street_name,
     people_city_name=select_people.city_name, people_state_name=select_people.state_name,
-    people_zip_code=select_people.zip_code,
+    people_zip_code=select_people.zip_code, people_price=select_people.price,
     day=now.day, month=now.month, year=now.year, endyear=now.year+1)
     return render_pdf(HTML(string=html))
