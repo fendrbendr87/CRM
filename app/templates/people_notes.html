@@ -2,7 +2,13 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <center><h1>Client notes for {{ select_people.first_name }} {{ select_people.last_name }}.</h1></center>
+    <center><h1>Client notes for {{ select_people.first_name }} {{ select_people.last_name }}.: /h1></center>
+
+    <br>
+    <br>
+
+    <center><a href="{{ url_for('view_people', people_id=select_people.id ) }}" class="btn btn-info">Back to Client Profile</a></center>
+
 
     <center>
     <br>

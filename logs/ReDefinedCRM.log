@@ -28,3 +28,53 @@ NameError: name 'account_pk' is not defined
 2019-01-25 15:43:29,279 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
 2019-01-25 15:43:48,890 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
 2019-01-25 15:44:21,558 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:45:25,826 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:46:22,833 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/gene/Desktop/CRM/app/routes.py", line 140, in recentsales
+    tot_sales = tot_sales + everyone.price
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+2019-01-25 15:46:37,502 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:46:39,863 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/gene/Desktop/CRM/app/routes.py", line 140, in recentsales
+    tot_sales = tot_sales + everyone.price
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+2019-01-25 15:47:12,508 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:49:46,231 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:50:11,053 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:53:53,230 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:54:12,428 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:55:11,208 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:56:14,350 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:56:43,470 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 16:00:01,928 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 16:01:27,547 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]

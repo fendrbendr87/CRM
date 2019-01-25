@@ -2,12 +2,8 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>Hello, {{ current_user.username }}!</h1>
-    <div class="btn-group">
-        <a href="{{ url_for('add_people') }}" class="btn btn-info">Add Person</a>
-    </div>
-    
-    <div><p><b>Here are your current Buyer Prospects:</b></p></div>
+    <center><h1>Here are your current Buyer Prospects:</h1></center>
+    <br>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
@@ -21,8 +17,16 @@
             <TR>
                 <TD class="active"><a href="{{ url_for('view_people', people_id=everyone.id) }}">{{ everyone.first_name }}  {{ everyone.last_name }}</a></TD>
                 <TD class="active">{{ everyone.phone_cell }}</TD>
+                {% if everyone.house_number %}
+                <TD class="active">{{ everyone.house_number }} {{ everyone.street_name }} {{ everyone.city_name }}, {{ everyone.state_name }} {{ everyone.zip_code }}</TD>
+                {% endif %}
             </TR>
             {% endfor %}
         </table>
     </div>
+    <center>
+        <div class="btn-group">
+            <a href="{{ url_for('add_people') }}" class="btn btn-info">Add Person</a>
+        </div>
+    </center>
 {% endblock %}
