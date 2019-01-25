@@ -20,7 +20,7 @@
                 <TD class="active"><a href="{{ url_for('view_people', people_id=everyone.id) }}">{{ everyone.first_name }}  {{ everyone.last_name }}</a></TD>
                 <TD class="active">{{ everyone.phone_cell }}</TD>
                 {% if everyone.house_number %}
-                <TD class="active">{{ everyone.street_number }} {{ everyone.street_name }} {{ everyone.city_name }}, {{ everyone.state_name }} {{ everyone.zip_code }}</TD>
+                <TD class="active">{{ everyone.house_number }} {{ everyone.street_name }} {{ everyone.city_name }}, {{ everyone.state_name }} {{ everyone.zip_code }}</TD>
                 {% endif %}
             </TR>
             {% endfor %}

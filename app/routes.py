@@ -73,9 +73,10 @@ def view_people(people_id):
                 modified_phone_cell=select_people.phone_cell, modified_notes=select_people.notes,
                 modified_ptype=select_people.ptype, modified_pstatus=select_people.pstatus, 
                 modified_house_number=select_people.house_number, modified_street_name=select_people.street_name, 
-                modified_city_name=select_people.city_name, modified_zip_code=select_people.zip_code, modified_price=select_people.price)
-    #if modify_form.validate_on_submit():
-    fif modify_form.validate_on_submit() and modify_form.submit1.data:
+                modified_city_name=select_people.city_name, modified_state_name=select_people.state_name, modified_zip_code=select_people.zip_code, modified_price=select_people.price)
+
+        
+    if modify_form.validate_on_submit():
         select_people.first_name=modify_form.modified_first_name.data
         select_people.last_name=modify_form.modified_last_name.data
         select_people.phone_cell=modify_form.modified_phone_cell.data
@@ -92,24 +93,30 @@ def view_people(people_id):
         flash('Your Persons Information has been modified.')
         return redirect(url_for('view_people', people_id=people_id))
     
-    notes_form = AddProfileNotesForm()
-    #viewpnotes=view_profile_notes(current_user=current_user, people_account_pk=people_id)
 
-    #if notes_form.validate_on_submit():
-    if notes_form.validate_on_submit() and notes_form.submit2.data:
+    return render_template('view_people.html', title = 'View Person', select_people=select_people, modify_form=modify_form, viewpnotes=pnotes)
+
+@app.route('/people_notes/<people_id>', methods=['GET', 'POST'])
+@login_required
+def people_notes(people_id):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    pnotes=view_profile_notes(current_user=current_user, people_account_pk=people_id)
+    select_people = People.query.filter_by(user_account_pk=account_pk, id=people_id).first()
+    notes_form = AddProfileNotesForm()
+    if notes_form.validate_on_submit():
+    #if notes_form.submit2.data and notes_form.validate():
+    #if notes_form.validate_on_submit() and notes_form.submit2.data:
         profile_note=notes_form.pnotes.data
         profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id)
         if profile_note_storage == True:
             flash('Notes Added.')
-            return redirect(url_for('view_people', people_id=people_id))
+            return redirect(url_for('people_notes', people_id=people_id))
         else:
             flash('Something is wrong, note not added.')
-    
-        #return redirect('/view_people/<people_id>')
+    return render_template('people_notes.html', title = 'Client Notes', select_people=select_people, viewpnotes=pnotes, notes_form=notes_form)
 
-        #flash('You CLICKED IT')
-        #return redirect(url_for('/view_people/<people_id>'))
-    return render_template('view_people.html', title = 'View Person', select_people=select_people, modify_form=modify_form, notes_form=notes_form, viewpnotes=pnotes)
+
 
 @app.route('/convert_client/<people_id>', methods=['GET', 'POST'])
 @login_required

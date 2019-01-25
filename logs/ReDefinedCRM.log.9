@@ -1,4 +1,4 @@
-2018-12-18 20:15:07,694 ERROR: Exception on /peoplepdf.pdf [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-12-18 20:40:23,464 ERROR: Exception on /hello_people.pdf [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,9 +12,9 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-TypeError: hello_pdf() missing 1 required positional argument: 'people_id'
-2018-12-18 20:16:58,302 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
-2018-12-18 20:17:01,685 ERROR: Exception on /peoplepdf.pdf [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+TypeError: hello_pdf() missing 2 required positional arguments: 'fname' and 'lname'
+2018-12-18 20:41:32,259 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-12-18 20:41:37,805 ERROR: Exception on /hello_people.pdf [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -28,9 +28,9 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-TypeError: hello_pdf() missing 1 required positional argument: 'people_id'
-2018-12-18 20:36:38,575 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
-2018-12-18 20:36:44,302 ERROR: Exception on /view_people/2 [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+TypeError: hello_pdf() missing 2 required positional arguments: 'fname' and 'lname'
+2018-12-18 20:43:04,089 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-12-18 20:43:08,963 ERROR: Exception on /hello_people.pdf [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -44,67 +44,50 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+TypeError: hello_pdf() missing 2 required positional arguments: 'fname' and 'lname'
+2018-12-18 20:43:49,968 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2018-12-18 20:44:23,534 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+2019-01-16 19:47:57,193 INFO: ReDefined CRM Startup [in /home/gene/Desktop/DESKTOP/DESKTOP/CRM/app/__init__.py:53]
+2019-01-16 19:48:28,007 ERROR: Exception on /view_people/2 [POST] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/routes.py", line 101, in view_people
-    return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form, notes_form=notes_form, viewpnotes=pnotes)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/view_people.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 66, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/view_people.html", line 19, in block "app_content"
-    <a href="{{ url_for('hello_pdf', people_id=current_user.username) }}" class="btn btn-success">Print Listing Agreement</a>
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'hello_pdf' with values ['people_id']. Did you forget to specify values ['name']?
-2018-12-18 20:37:09,554 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
-2018-12-18 20:37:55,862 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
-2018-12-18 20:38:45,906 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
-2018-12-18 20:38:52,592 ERROR: Exception on /hello_Avi.pdf [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/gene/Desktop/DESKTOP/DESKTOP/CRM/app/routes.py", line 81, in view_people
+    profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id, people_id=people_id)
+TypeError: add_profile_note() got an unexpected keyword argument 'people_id'
+2019-01-16 19:49:17,151 ERROR: Exception on /view_people/3 [POST] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
     raise value
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/routes.py", line 185, in hello_pdf
-    html = render_template('peoplepdf.html', name=name.first_name, day=now.day, month=now.month, year=now.year, endyear=now.year+1)
-AttributeError: 'str' object has no attribute 'first_name'
-2018-12-18 20:39:43,897 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/gene/Desktop/DESKTOP/DESKTOP/CRM/app/routes.py", line 81, in view_people
+    profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id, people_id=people_id)
+TypeError: add_profile_note() got an unexpected keyword argument 'people_id'
+2019-01-16 19:49:39,318 INFO: ReDefined CRM Startup [in /home/gene/Desktop/DESKTOP/DESKTOP/CRM/app/__init__.py:53]
+2019-01-16 19:50:43,162 INFO: ReDefined CRM Startup [in /home/gene/Desktop/DESKTOP/DESKTOP/CRM/app/__init__.py:53]
+2019-01-19 17:19:22,442 INFO: ReDefined CRM Startup [in /home/gene/Desktop/DESKTOP/DESKTOP/CRM/app/__init__.py:53]
+2019-01-21 17:56:18,242 INFO: ReDefined CRM Startup [in /home/gene/Desktop/DESKTOP/DESKTOP/CRM/app/__init__.py:53]
+2019-01-21 17:57:49,203 INFO: ReDefined CRM Startup [in /home/gene/Desktop/DESKTOP/DESKTOP/CRM/app/__init__.py:53]

@@ -1,4 +1,4 @@
-2018-12-18 20:12:17,311 ERROR: Exception on /view_people/2 [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-12-18 20:39:49,797 ERROR: Exception on /view_people/2 [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -43,7 +43,7 @@ Traceback (most recent call last):
   File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 66, in block "content"
     {% block app_content %}{% endblock %}
   File "/mnt/c/Users/GM/Desktop/CRM/app/templates/view_people.html", line 19, in block "app_content"
-    <a href="{{ url_for('hello_pdf', name=name) }}" class="btn btn-success">Print Listing Agreement</a>
+    <a href="{{ url_for('hello_pdf', fname=select_people.first_name, lname=select_people.last_name, ) }}" class="btn btn-success">Print Listing Agreement</a>
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
@@ -54,9 +54,8 @@ Traceback (most recent call last):
     force_external=external)
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'hello_pdf' with values ['name']. Did you forget to specify values ['people_id']?
-2018-12-18 20:13:00,334 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
-2018-12-18 20:13:05,446 ERROR: Exception on /view_people/2 [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+werkzeug.routing.BuildError: Could not build url for endpoint 'hello_pdf' with values ['fname', 'lname']. Did you forget to specify values ['name']?
+2018-12-18 20:39:53,750 ERROR: Exception on /view_people/2 [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -101,7 +100,7 @@ Traceback (most recent call last):
   File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 66, in block "content"
     {% block app_content %}{% endblock %}
   File "/mnt/c/Users/GM/Desktop/CRM/app/templates/view_people.html", line 19, in block "app_content"
-    <a href="{{ url_for('hello_pdf', name=name) }}" class="btn btn-success">Print Listing Agreement</a>
+    <a href="{{ url_for('hello_pdf', fname=select_people.first_name, lname=select_people.last_name, ) }}" class="btn btn-success">Print Listing Agreement</a>
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
@@ -112,6 +111,5 @@ Traceback (most recent call last):
     force_external=external)
   File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'hello_pdf' with values ['name']. Did you forget to specify values ['people_id']?
-2018-12-18 20:13:58,068 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
-2018-12-18 20:14:59,869 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+werkzeug.routing.BuildError: Could not build url for endpoint 'hello_pdf' with values ['fname', 'lname']. Did you forget to specify values ['name']?
+2018-12-18 20:40:20,332 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]

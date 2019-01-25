@@ -1,4 +1,4 @@
-2019-01-24 18:43:35,864 ERROR: Exception on /convert_client/4 [POST] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+2019-01-24 20:18:19,478 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,11 +14,13 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/gene/Desktop/CRM/app/routes.py", line 117, in convert_client
-    convert_cl(account_pk=user_account_pk, people_id=people_id)
-TypeError: convert_cl() got an unexpected keyword argument 'account_pk'
-2019-01-24 18:44:01,882 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 18:44:08,811 ERROR: Exception on /convert_client/4 [POST] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/gene/Desktop/CRM/app/routes.py", line 127, in recentsales
+    tot_sales = total_sales(current_user)
+  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 18, in total_sales
+    for sales in alldeals.price:
+AttributeError: 'list' object has no attribute 'price'
+2019-01-24 20:18:59,493 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 20:19:02,498 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -34,15 +36,13 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/gene/Desktop/CRM/app/routes.py", line 117, in convert_client
-    convert_cl(user_account_pk=user_account_pk, people_id=people_id)
-  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 34, in convert_cl
-    user_account_pk=convert_cl.account_pk)
-AttributeError: 'People' object has no attribute 'account_pk'
-2019-01-24 18:44:33,285 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 18:46:59,396 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 18:50:18,962 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 18:50:44,099 ERROR: Exception on /convert_client/4 [POST] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/gene/Desktop/CRM/app/routes.py", line 127, in recentsales
+    tot_sales = total_sales(current_user)
+  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 18, in total_sales
+    for sales in alldeals[9]:
+IndexError: list index out of range
+2019-01-24 20:19:15,039 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 20:19:16,089 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -58,16 +58,13 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/gene/Desktop/CRM/app/routes.py", line 118, in convert_client
-    convert_cl(user_account_pk=user_account_pk, people_id=people_id)
-  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 33, in convert_cl
-    street_name=convert_cl.street_name, city_name=convert_cl.city_name, state_name=conver_cl.state_name,
-NameError: name 'conver_cl' is not defined
-2019-01-24 18:51:14,738 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 18:55:27,760 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 18:57:22,792 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 18:58:16,797 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 18:58:21,435 ERROR: Exception on /convert_client/4 [POST] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/gene/Desktop/CRM/app/routes.py", line 127, in recentsales
+    tot_sales = total_sales(current_user)
+  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 18, in total_sales
+    for sales in alldeals[price]:
+NameError: name 'price' is not defined
+2019-01-24 20:19:25,805 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 20:19:27,515 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -83,18 +80,54 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/gene/Desktop/CRM/app/routes.py", line 120, in convert_client
-    return redirect(url_for('recentsales'))
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
+  File "/home/gene/Desktop/CRM/app/routes.py", line 127, in recentsales
+    tot_sales = total_sales(current_user)
+  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 18, in total_sales
+    for sales in alldeals["price"]:
+TypeError: list indices must be integers or slices, not str
+2019-01-24 20:20:25,597 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 20:22:00,302 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 20:22:01,761 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
   File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
     raise value
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/home/gene/.local/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'recentsales'. Did you mean 'buyer_clients' instead?
-2019-01-24 18:59:13,232 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 19:02:07,085 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/gene/Desktop/CRM/app/routes.py", line 127, in recentsales
+    tot_sales = total_sales(current_user)
+  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 20, in total_sales
+    for sales in alldeals[9]:
+IndexError: list index out of range
+2019-01-24 20:22:14,167 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 20:23:32,502 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 20:34:22,938 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 20:34:26,420 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/gene/Desktop/CRM/app/routes.py", line 128, in recentsales
+    for sales_nums in all_closed_deals.price:
+AttributeError: 'list' object has no attribute 'price'
+2019-01-24 20:36:55,311 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]

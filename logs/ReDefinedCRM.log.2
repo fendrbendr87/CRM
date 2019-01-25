@@ -1,4 +1,4 @@
-2019-01-24 20:18:19,478 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+2019-01-24 21:07:25,953 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,13 +14,13 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/gene/Desktop/CRM/app/routes.py", line 127, in recentsales
-    tot_sales = total_sales(current_user)
-  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 18, in total_sales
-    for sales in alldeals.price:
-AttributeError: 'list' object has no attribute 'price'
-2019-01-24 20:18:59,493 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 20:19:02,498 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/gene/Desktop/CRM/app/routes.py", line 129, in recentsales
+    tot_sales = tot_sales + everyone.price
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+2019-01-24 21:10:33,024 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 21:10:58,041 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 10:59:28,179 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 10:59:47,850 ERROR: Exception on /view_people/2 [POST] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -36,13 +36,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/gene/Desktop/CRM/app/routes.py", line 127, in recentsales
-    tot_sales = total_sales(current_user)
-  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 18, in total_sales
-    for sales in alldeals[9]:
-IndexError: list index out of range
-2019-01-24 20:19:15,039 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 20:19:16,089 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/gene/Desktop/CRM/app/routes.py", line 78, in view_people
+    select_people.first_name=form.modified_first_name.data
+NameError: name 'form' is not defined
+2019-01-25 11:01:17,906 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 11:24:36,530 ERROR: Exception on /view_people/2 [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -58,13 +56,33 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/gene/Desktop/CRM/app/routes.py", line 127, in recentsales
-    tot_sales = total_sales(current_user)
-  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 18, in total_sales
-    for sales in alldeals[price]:
-NameError: name 'price' is not defined
-2019-01-24 20:19:25,805 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 20:19:27,515 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/gene/Desktop/CRM/app/routes.py", line 93, in view_people
+    form
+NameError: name 'form' is not defined
+2019-01-25 11:25:08,050 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 11:30:06,678 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 11:32:22,835 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 11:33:39,597 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 11:34:50,190 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 14:27:52,979 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 14:51:23,554 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 14:54:24,446 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 14:55:57,403 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 14:56:23,312 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 14:58:40,816 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 14:58:57,824 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 14:59:35,573 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:00:52,891 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:01:14,785 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:01:53,319 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:02:15,879 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:03:43,522 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:04:53,385 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:06:08,225 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:08:00,328 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:11:01,598 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:12:02,240 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:12:06,704 ERROR: Exception on /view_people/2 [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -80,54 +98,16 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/gene/Desktop/CRM/app/routes.py", line 127, in recentsales
-    tot_sales = total_sales(current_user)
-  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 18, in total_sales
-    for sales in alldeals["price"]:
-TypeError: list indices must be integers or slices, not str
-2019-01-24 20:20:25,597 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 20:22:00,302 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 20:22:01,761 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/gene/Desktop/CRM/app/routes.py", line 127, in recentsales
-    tot_sales = total_sales(current_user)
-  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 20, in total_sales
-    for sales in alldeals[9]:
-IndexError: list index out of range
-2019-01-24 20:22:14,167 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 20:23:32,502 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 20:34:22,938 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
-2019-01-24 20:34:26,420 ERROR: Exception on /recentsales [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/gene/Desktop/CRM/app/routes.py", line 128, in recentsales
-    for sales_nums in all_closed_deals.price:
-AttributeError: 'list' object has no attribute 'price'
-2019-01-24 20:36:55,311 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+  File "/home/gene/Desktop/CRM/app/routes.py", line 77, in view_people
+    if modify_form.validate_on_submit1():
+AttributeError: 'ModifyPeopleForm' object has no attribute 'validate_on_submit1'
+2019-01-25 15:12:22,838 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:15:48,146 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:16:32,740 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:18:01,651 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:18:19,570 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:19:59,800 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:21:40,661 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:27:09,766 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:28:07,024 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 15:35:37,753 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
