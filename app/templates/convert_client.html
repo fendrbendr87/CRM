@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block app_content %}
+    <h1>Hello, {{ current_user.username }}!</h1>
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="sampleFields">
+                    <div class="fieldControl">
+                        <a href="{{ url_for('hello_pdf', fname=select_people.first_name, lname=select_people.last_name, ) }}" class="btn btn-success">Print Listing Agreement</a>
+                    </div>
+                    <h2>Person's Information:</h2>
+                    <div><p>First Name: {{ select_people.first_name }}</p></div>
+                    <div><p>Last Name: {{ select_people.last_name }}</p></div>
+                    <div><p>Cell Number: {{ select_people.phone_cell }}</p></div>
+                    <div><p>Notes: {{ select_people.notes }}</p></div>
+                    {% if select_people.house_number %}
+                    <div><p>Street Address: {{ select_people.house_number }} {{ select_people.street_name }}</p></div>
+                    <div><p>City: {{ select_people.city_name }}, {{ select_people.state_name }}, {{ select_people.zip_code }}</p></div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+{% endblock %}

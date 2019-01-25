@@ -1,117 +1,122 @@
-2018-12-18 20:12:17,311 ERROR: Exception on /view_people/2 [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+2019-01-24 19:02:30,065 ERROR: Exception on /add_people [POST] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/routes.py", line 101, in view_people
-    return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form, notes_form=notes_form, viewpnotes=pnotes)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/view_people.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 66, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/view_people.html", line 19, in block "app_content"
-    <a href="{{ url_for('hello_pdf', name=name) }}" class="btn btn-success">Print Listing Agreement</a>
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'hello_pdf' with values ['name']. Did you forget to specify values ['people_id']?
-2018-12-18 20:13:00,334 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
-2018-12-18 20:13:05,446 ERROR: Exception on /view_people/2 [GET] [in /mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1230, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 536, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
     raise value
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/routes.py", line 101, in view_people
-    return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form, notes_form=notes_form, viewpnotes=pnotes)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/view_people.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/base.html", line 66, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/mnt/c/Users/GM/Desktop/CRM/app/templates/view_people.html", line 19, in block "app_content"
-    <a href="{{ url_for('hello_pdf', name=name) }}" class="btn btn-success">Print Listing Agreement</a>
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+  File "/home/gene/Desktop/CRM/app/routes.py", line 155, in add_people
+    people_create = create_people(current_user=current_user, first_name=form.first_name.data, last_name=form.last_name.data, phone_cell=form.phone_cell.data, ptype=form.ptype.data, pstatus=form.pstatus.data, notes=form.notes.data)
+  File "/home/gene/Desktop/CRM/app/queryfunc.py", line 12, in create_people
+    db.session.commit()
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1008, in commit
+    self.transaction.commit()
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 487, in commit
+    self._prepare_impl()
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 466, in _prepare_impl
+    self.session.flush()
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2424, in flush
+    self._flush(objects)
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2562, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 67, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 277, in reraise
     raise value
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/mnt/c/Users/GM/Desktop/CRM/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'hello_pdf' with values ['name']. Did you forget to specify values ['people_id']?
-2018-12-18 20:13:58,068 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
-2018-12-18 20:14:59,869 INFO: ReDefined CRM Startup [in /mnt/c/Users/GM/Desktop/CRM/app/__init__.py:53]
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2522, in _flush
+    flush_context.execute()
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 416, in execute
+    rec.execute(self)
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 583, in execute
+    uow,
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 245, in save_obj
+    insert,
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 1116, in _emit_insert_statements
+    statement, params
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 974, in execute
+    return meth(self, multiparams, params)
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 273, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1093, in _execute_clauseelement
+    distilled_params,
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1234, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1452, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 296, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 276, in reraise
+    raise value.with_traceback(tb)
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1230, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/gene/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 536, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked [SQL: 'INSERT INTO people (first_name, last_name, phone_cell, ptype, pstatus, notes, house_number, street_name, city_name, state_name, zip_code, price, user_account_pk) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: ('Alex', 'Braylovskiy', 3477012321, 'seller', 'client', '', None, None, None, None, None, None, 2)] (Background on this error at: http://sqlalche.me/e/e3q8)
+2019-01-24 19:35:26,251 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 19:35:39,634 ERROR: Exception on /view_people/7 [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/gene/Desktop/CRM/app/routes.py", line 72, in view_people
+    form = ModifyPeopleForm(modified_first_name=select_people.first_name, modified_last_name=select_people.last_name,
+AttributeError: 'NoneType' object has no attribute 'first_name'
+2019-01-24 19:36:04,194 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 19:36:05,846 ERROR: Exception on /view_people/7 [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/gene/Desktop/CRM/app/routes.py", line 72, in view_people
+    form = ModifyPeopleForm(modified_first_name=select_people.first_name, modified_last_name=select_people.last_name,
+AttributeError: 'NoneType' object has no attribute 'first_name'
+2019-01-24 19:37:13,377 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 19:37:50,422 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 19:38:54,646 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 19:57:22,839 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 19:58:10,658 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 19:59:48,569 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 20:13:17,787 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-24 20:18:15,543 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]

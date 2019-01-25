@@ -4,10 +4,10 @@ from flask_login import UserMixin
 from time import time
 from datetime import datetime
 import jwt
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
+#from flask_admin import Admin
+#from flask_admin.contrib.sqla import ModelView
 
-admin = Admin(app)
+#admin = Admin(app)
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -49,6 +49,12 @@ class People(db.Model):
     ptype=db.Column(db.String(6))
     pstatus=db.Column(db.String(7))
     notes=db.Column(db.String(140))
+    house_number=db.Column(db.String(140))
+    street_name=db.Column(db.String(140))
+    city_name=db.Column(db.String(140))
+    state_name=db.Column(db.String(140))
+    zip_code=db.Column(db.String(140))
+    price=db.Column(db.Integer)
     user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
     ProfileNotes=db.relationship('ProfileNotes', backref='peopleprofilenotes', lazy='dynamic')
 
@@ -62,8 +68,23 @@ class ProfileNotes(db.Model):
     people_account_pk=db.Column(db.Integer, db.ForeignKey('people.id'))
     user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
 
+
     def __repr__(self):
         return '<ProfileNotes> pnotes: {}'.format(self.pnotes)
+
+class ClosedDeals(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name=db.Column(db.String(20))
+    last_name=db.Column(db.String(20))
+    phone_cell=db.Column(db.Integer)
+    ptype=db.Column(db.String(6))
+    house_number=db.Column(db.String(140))
+    street_name=db.Column(db.String(140))
+    city_name=db.Column(db.String(140))
+    state_name=db.Column(db.String(140))
+    zip_code=db.Column(db.String(140))
+    price=db.Column(db.Integer)
+    user_account_pk=db.Column(db.Integer, db.ForeignKey('user.id'))
 
 #admin.add_view(ModelView(User, db.session))
 #admin.add_view(ModelView(Prospects, db.session))

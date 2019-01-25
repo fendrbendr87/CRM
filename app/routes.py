@@ -1,8 +1,8 @@
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddPeopleForm, ModifyPeopleForm, SearchPeopleForm, AddProfileNotesForm
+from app.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm, AddPeopleForm, ModifyPeopleForm, SearchPeopleForm, AddProfileNotesForm, ConvertClientForm
 from app.models import User, People
 from app.email import send_password_reset_email
-from app.queryfunc import create_people, create_people, edit_people, get_people, search_names, view_buyer_prospects, view_buyer_clients, view_seller_prospects, view_seller_clients, add_profile_note, view_profile_notes
+from app.queryfunc import create_people, create_people, edit_people, get_people, search_names, view_buyer_prospects, view_buyer_clients, view_seller_prospects, view_seller_clients, add_profile_note, view_profile_notes, delete_client, convertclient, view_closed_deals
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -11,10 +11,8 @@ import datetime
 
 now=datetime.datetime.now()
 
-
-
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods=['GET'])
 @login_required
 def index():
     return render_template("index.html", title='Index')
@@ -73,17 +71,9 @@ def view_people(people_id):
     pnotes=view_profile_notes(current_user=current_user, people_account_pk=people_id)
     form = ModifyPeopleForm(modified_first_name=select_people.first_name, modified_last_name=select_people.last_name, 
                 modified_phone_cell=select_people.phone_cell, modified_notes=select_people.notes,
-                modified_ptype=select_people.ptype, modified_pstatus=select_people.pstatus)
-    notes_form = AddProfileNotesForm()
-    #viewpnotes=view_profile_notes(current_user=current_user, people_account_pk=people_id)
-    if notes_form.validate_on_submit():
-        profile_note=notes_form.pnotes.data
-        profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id, people_id=people_id)
-        if profile_note_storage == True:
-            flash('Notes Added.')
-            return redirect(url_for('view_people', people_id=people_id))
-        else:
-            flash('Something is wrong, note not added.')
+                modified_ptype=select_people.ptype, modified_pstatus=select_people.pstatus, 
+                modified_house_number=select_people.house_number, modified_street_name=select_people.street_name, 
+                modified_city_name=select_people.city_name, modified_zip_code=select_people.zip_code, modified_price=select_people.price)
     if form.validate_on_submit():
         select_people.first_name=form.modified_first_name.data
         select_people.last_name=form.modified_last_name.data
@@ -91,14 +81,56 @@ def view_people(people_id):
         select_people.notes=form.modified_notes.data
         select_people.ptype=form.modified_ptype.data
         select_people.pstatus=form.modified_pstatus.data
+        select_people.house_number=form.modified_house_number.data
+        select_people.street_name=form.modified_street_name.data
+        select_people.city_name=form.modified_city_name.data
+        select_people.state_name=form.modified_state_name.data
+        select_people.zip_code=form.modified_zip_code.data
+        select_people.price=form.modified_price.data
         db.session.commit()
         flash('Your Persons Information has been modified.')
         return redirect(url_for('view_people', people_id=people_id))
+    
+    notes_form = AddProfileNotesForm()
+    #viewpnotes=view_profile_notes(current_user=current_user, people_account_pk=people_id)
+
+    if notes_form.validate_on_submit():
+        profile_note=notes_form.pnotes.data
+        profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id)
+        if profile_note_storage == True:
+            flash('Notes Added.')
+            return redirect(url_for('view_people', people_id=people_id))
+        else:
+            flash('Something is wrong, note not added.')
+    
         #return redirect('/view_people/<people_id>')
 
         #flash('You CLICKED IT')
         #return redirect(url_for('/view_people/<people_id>'))
     return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form, notes_form=notes_form, viewpnotes=pnotes)
+
+@app.route('/convert_client/<people_id>', methods=['GET', 'POST'])
+@login_required
+def convert_client(people_id):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    user_account_pk = currentuser.id
+    select_people = People.query.filter_by(user_account_pk=user_account_pk, id=people_id).first()
+    form = ConvertClientForm()
+    if form.validate_on_submit():
+        convertclient(user_account_pk=user_account_pk, people_id=people_id)
+        delete_client(user_account_pk=user_account_pk, people_id=people_id)
+        return redirect(url_for('recentsales'))
+    return render_template('convert_client.html', title = 'Convert Client', select_people=select_people, form=form)
+
+@app.route('/recentsales', methods=['GET'])
+@login_required
+def recentsales():
+    all_closed_deals = view_closed_deals(current_user)
+    tot_sales = 0
+    for everyone in all_closed_deals:
+        tot_sales = tot_sales + everyone.price
+    tot_comm = tot_sales * 0.045
+    return render_template('recentsales.html', title = 'Recent Sales', deals=all_closed_deals, total_s=tot_sales, commission = tot_comm)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -127,7 +159,12 @@ def logout():
 def add_people():
     form = AddPeopleForm()
     if form.validate_on_submit():
-        people_create = create_people(current_user=current_user, first_name=form.first_name.data, last_name=form.last_name.data, phone_cell=form.phone_cell.data, ptype=form.ptype.data, pstatus=form.pstatus.data, notes=form.notes.data)
+        people_create = create_people(current_user=current_user, first_name=form.first_name.data, 
+            last_name=form.last_name.data, phone_cell=form.phone_cell.data, 
+            ptype=form.ptype.data, pstatus=form.pstatus.data, notes=form.notes.data,
+            house_number=form.house_number.data, street_name=form.street_name.data,
+            city_name=form.city_name.data, state_name=form.state_name.data,
+            zip_code=form.zip_code.data)
         if people_create == True:
             flash('Congradulations, you added the Person to your CRM!')
             return redirect(url_for('people'))
@@ -178,9 +215,14 @@ def reset_password(token):
     return render_template('reset_password.html', form=form)
 
 @app.route('/hello_<fname>_<lname>.pdf')
+@login_required
 def hello_pdf(fname, lname):
-    #currentuser = User.query.filter_by(username=current_user.username).first()
-    #account_pk = currentuser.id
-    #select_people = People.query.filter_by(user_account_pk=account_pk, id=people_id).first()
-    html = render_template('peoplepdf.html', fname=fname, lname=lname, day=now.day, month=now.month, year=now.year, endyear=now.year+1)
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    select_people = People.query.filter_by(first_name=fname, last_name=lname).first()
+    html = render_template('peoplepdf.html', fname=fname, lname=lname, 
+    people_house_number=select_people.house_number, people_street_name=select_people.street_name,
+    people_city_name=select_people.city_name, people_state_name=select_people.state_name,
+    people_zip_code=select_people.zip_code,
+    day=now.day, month=now.month, year=now.year, endyear=now.year+1)
     return render_pdf(HTML(string=html))

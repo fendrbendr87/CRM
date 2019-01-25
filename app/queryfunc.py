@@ -1,16 +1,31 @@
 from app import app, db
-from app.models import User, People, ProfileNotes
+from app.models import User, People, ProfileNotes, ClosedDeals
 
 
 
-def create_people(current_user, first_name, last_name, phone_cell, ptype, pstatus, notes):
+def create_people(current_user, first_name, last_name, phone_cell, ptype, pstatus, notes, house_number, street_name, city_name, state_name, zip_code):
     currentuser = User.query.filter_by(username=current_user.username).first()
     user_account_pk = currentuser.id
     new_people = People(first_name=first_name, last_name=last_name, 
-            phone_cell=phone_cell, ptype=ptype, pstatus=pstatus, notes=notes, user_account_pk=user_account_pk)
+            phone_cell=phone_cell, ptype=ptype, pstatus=pstatus, notes=notes, 
+            house_number=house_number, street_name=street_name, city_name=city_name, state_name=state_name, zip_code=zip_code,
+            user_account_pk=user_account_pk)
     db.session.add(new_people)
     db.session.commit()
     return True
+
+#def total_sales(current_user):
+#    currentuser = User.query.filter_by(username=current_user.username).first()
+#    user_account_pk = currentuser.id
+#    all_closed = ClosedDeals.query.filter_by(user_account_pk=user_account_pk).all()
+#    for price in all_closed:
+#        print(price)
+
+    #final_tally = 0
+    #for sales in alldeals[9]:
+        #final_tally = final_tally + sales
+    #return final_tally
+
 
 def add_profile_note(current_user, pnotes, people_account_pk):
     currentuser = User.query.filter_by(username=current_user.username).first()
@@ -19,6 +34,31 @@ def add_profile_note(current_user, pnotes, people_account_pk):
     db.session.add(new_profile_note)
     db.session.commit()
     return True
+
+def view_closed_deals(current_user):
+    currentuser = User.query.filter_by(username=current_user.username).first()
+    user_account_pk = currentuser.id
+    all_closed = ClosedDeals.query.filter_by(user_account_pk=user_account_pk).all()
+    return all_closed
+
+
+def delete_client(user_account_pk, people_id):
+    delete_c = People.query.filter_by(user_account_pk=user_account_pk, id=people_id).first()
+    db.session.delete(delete_c)
+    db.session.commit()
+    return True
+
+def convertclient(user_account_pk, people_id):
+    convert_cl = People.query.filter_by(user_account_pk=user_account_pk, id=people_id).first()
+    add_sale = ClosedDeals(first_name=convert_cl.first_name, last_name=convert_cl.last_name, 
+        phone_cell=convert_cl.phone_cell, ptype=convert_cl.ptype, house_number=convert_cl.house_number, 
+        street_name=convert_cl.street_name, city_name=convert_cl.city_name, state_name=convert_cl.state_name,
+        zip_code=convert_cl.zip_code, price=convert_cl.price, 
+        user_account_pk=convert_cl.user_account_pk)
+    db.session.add(add_sale)
+    db.session.commit()
+    return True
+
 
 def view_profile_notes(current_user, people_account_pk):
     currentuser = User.query.filter_by(username=current_user.username).first()
@@ -37,6 +77,12 @@ def view_buyer_prospects(current_user):
     account_pk = currentuser.id
     buyerprospects=People.query.filter_by(user_account_pk=account_pk, ptype="buyer", pstatus="prospect").all()
     return buyerprospects
+
+#def select_person(current_user, first_name, last_name):
+#    currentuser = User.query.filter_by(username=current_user.username).first()
+#    account_pk = currentuser.id
+#    person_selected=
+#    return person_selected
 
 def view_buyer_clients(current_user):
     currentuser = User.query.filter_by(username=current_user.username).first()

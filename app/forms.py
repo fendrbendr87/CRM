@@ -48,6 +48,11 @@ class AddPeopleForm(FlaskForm):
         ('seller', 'Seller')], validators=[DataRequired()])
     pstatus = SelectField('Client Status', choices=[('prospect', 'Prospect'), 
         ('client', 'Client')], validators=[DataRequired()])
+    house_number = StringField('House Number')
+    street_name = StringField('Street Name')
+    city_name = StringField('City Name')
+    state_name = StringField('State Name')
+    zip_code = StringField('Zip Code')
     notes = StringField('Notes')
     submit = SubmitField('Add Person')
 
@@ -59,7 +64,13 @@ class ModifyPeopleForm(FlaskForm):
         ('seller', 'Seller')], validators=[DataRequired()])
     modified_pstatus = SelectField('Client Status', choices=[('prospect', 'Prospect'), 
         ('client', 'Client')], validators=[DataRequired()])
+    modified_house_number = StringField('House Number')
+    modified_street_name = StringField('Street Name')
+    modified_city_name = StringField('City Name')
+    modified_state_name = StringField('State Name')
+    modified_zip_code = StringField('Zip Code')
     modified_notes = StringField('Notes')
+    modified_price = IntegerField('Price')
     submit = SubmitField('Update Person\'s Information')
 
 class SearchPeopleForm(FlaskForm):
@@ -67,5 +78,8 @@ class SearchPeopleForm(FlaskForm):
     submit = SubmitField('Search for Person')
 
 class AddProfileNotesForm(FlaskForm):
-    pnotes = TextAreaField('Add notes here', validators=[DataRequired(), Length(min=1, max=280)])
+    pnotes = TextAreaField('Add notes here')
     submit = SubmitField('Add Profile Notes')
+
+class ConvertClientForm(FlaskForm):
+    submit = SubmitField('Convert Client')

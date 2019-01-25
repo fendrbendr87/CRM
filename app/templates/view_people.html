@@ -11,46 +11,63 @@
 {% block app_content %}
     <h1>Hello, {{ current_user.username }}!</h1>
     <div class="wrapper">
-        <div class="sampleFields">
-            <div class="fieldControl">
-                <div class="btn-group">
-                    <button id="listButton" type="button" class="btn btn-warning">Modify Person</button>
-                    
-                    <a href="{{ url_for('hello_pdf', fname=select_people.first_name, lname=select_people.last_name, ) }}" class="btn btn-success">Print Listing Agreement</a>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="sampleFields">
+                    <div class="fieldControl">
+                        <div class="btn-group">
+                            <button id="listButton" type="button" class="btn btn-warning">Modify Person</button>
+                            <a href="{{ url_for('hello_pdf', fname=select_people.first_name, lname=select_people.last_name, ) }}" class="btn btn-success">Print Listing Agreement</a>
+                            <a href="{{ url_for('convert_client', people_id = select_people.id, ) }}" class="btn btn-danger">Convert Client</a>
+                        </div>
+                    </div>
+                    <h2>Person's Information:</h2>
+                    <div><p>First Name: {{ select_people.first_name }}</p></div>
+                    <div><p>Last Name: {{ select_people.last_name }}</p></div>
+                    <div><p>Cell Number: {{ select_people.phone_cell }}</p></div>
+                    <div><p>Notes: {{ select_people.notes }}</p></div>
+                    {% if select_people.house_number %}
+                    <div><p>Street Address: {{ select_people.house_number }} {{ select_people.street_name }}</p></div>
+                    <div><p>City: {{ select_people.city_name }}, {{ select_people.state_name }}, {{ select_people.zip_code }}</p></div>
+                    {% endif %}
+                </div>
+                <div class="sampleFields hidden">
+                    <div class="fieldControl">
+                        <button id="formButton" type="button" class="btn btn-info">Cancel Modify</button>
+                    </div>
+                    <h2>Modify Person's Information:</h2>
+                    <div class="row">
+                            <div class="col-md-8">
+                                {{ wtf.quick_form(form) }}
+                            </div>
+                    </div>
                 </div>
             </div>
-            <h2>Person's Information:</h2>
-            <div><p>First Name: {{ select_people.first_name }}</p></div>
-            <div><p>Last Name: {{ select_people.last_name }}</p></div>
-            <div><p>Cell Number: {{ select_people.phone_cell }}</p></div>
-            <div><p>Notes: {{ select_people.notes }}</p></div>
-        </div>
-        <div class="sampleFields hidden">
-            <div class="fieldControl">
-                <button id="formButton" type="button" class="btn btn-info">Cancel Modify</button>
-            </div>
-            <h2>Modify Person's Information:</h2>
-            <div class="row">
-                    <div class="col-md-4">
-                        {{ wtf.quick_form(form) }}
+            <div class="col-sm-6">
+            </br>
+            </br>
+            
+            
+                <h3>Client Notes</h3>
+                {% if viewpnotes %}
+                    {% for all_notes in viewpnotes %}
+                        <TR>
+                            <div>
+                                <TD class="active">{{ all_notes.timestamp }}</TD>
+                                <TD class=>   :  </TD>
+                                <TD class="active"><b>{{ all_notes.pnotes }}</b></TD>
+                            </div>
+                        </TR>
+                    {% endfor %}
+                {% endif %}
+                </br>
+                <div class="row">
+                    <div class="col-md-8">
+                        {{ wtf.quick_form(notes_form) }}
                     </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                {{ wtf.quick_form(notes_form) }}
-            </div>
-        </div>
-        {% if viewpnotes %}
-            {% for all_notes in viewpnotes %}
-                <TR>
-                    <div>
-                        <TD class="active">{{ all_notes.timestamp }}</TD>
-                        <TD class="active">{{ all_notes.pnotes }}</TD>
-                    </div>
-                </TR>
-            {% endfor %}
-        {% endif %}
     </div>
 
     <script>

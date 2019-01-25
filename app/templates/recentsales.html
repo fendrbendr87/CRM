@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <center><h1>Recent Sales</h1></center>
+</br>
+</br>
+
+<div class="col-sm-6">
+    <div class="panel panel-info">
+        <div class="panel-heading">Total Sales</div>
+            <div class="panel-body">{{ total_s }}</div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">Commission Earned</div>
+            <div class="panel-body">{{ commission }}</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</br>
+</br>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="info">
+                    <th>First and Last Name</th>
+                    <th>Cell Phone Number</th>
+                    <th>Address</th>
+                    <th>Closing Price</th>
+                </tr>
+            </thead>
+            {% for everyone in deals %}
+            <TR>
+                <TD class="active">{{ everyone.first_name }}  {{ everyone.last_name }}</a></TD>
+                <TD class="active">{{ everyone.phone_cell }}</TD>
+                <TD class="active">{{ everyone.street_number }} {{ everyone.street_name }} {{ everyone.city_name }}, {{ everyone.state_name }} {{ everyone.zip_code }}</TD>
+                <TD class="active">{{ everyone.price }}</TD>
+            </TR>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
