@@ -19,3 +19,48 @@ Traceback (most recent call last):
 TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
 2019-01-24 21:10:33,024 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
 2019-01-24 21:10:58,041 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 10:59:28,179 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 10:59:47,850 ERROR: Exception on /view_people/2 [POST] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/gene/Desktop/CRM/app/routes.py", line 78, in view_people
+    select_people.first_name=form.modified_first_name.data
+NameError: name 'form' is not defined
+2019-01-25 11:01:17,906 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 11:24:36,530 ERROR: Exception on /view_people/2 [GET] [in /home/gene/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/gene/.local/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/gene/Desktop/CRM/app/routes.py", line 93, in view_people
+    form
+NameError: name 'form' is not defined
+2019-01-25 11:25:08,050 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 11:30:06,678 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 11:32:22,835 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 11:33:39,597 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]
+2019-01-25 11:34:50,190 INFO: ReDefined CRM Startup [in /home/gene/Desktop/CRM/app/__init__.py:53]

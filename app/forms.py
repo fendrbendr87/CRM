@@ -71,7 +71,7 @@ class ModifyPeopleForm(FlaskForm):
     modified_zip_code = StringField('Zip Code')
     modified_notes = StringField('Notes')
     modified_price = IntegerField('Price')
-    submit = SubmitField('Update Person\'s Information')
+    submit1 = SubmitField('Update Person\'s Information')
 
 class SearchPeopleForm(FlaskForm):
     first_last = StringField('First or Last Name', validators=[DataRequired()])
@@ -79,7 +79,7 @@ class SearchPeopleForm(FlaskForm):
 
 class AddProfileNotesForm(FlaskForm):
     pnotes = TextAreaField('Add notes here')
-    submit = SubmitField('Add Profile Notes')
+    submit2 = SubmitField('Add Profile Notes')
 
 class ConvertClientForm(FlaskForm):
     submit = SubmitField('Convert Client')

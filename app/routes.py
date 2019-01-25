@@ -69,24 +69,25 @@ def view_people(people_id):
     select_people = People.query.filter_by(user_account_pk=account_pk, id=people_id).first()
     user_account_pk = account_pk
     pnotes=view_profile_notes(current_user=current_user, people_account_pk=people_id)
-    form = ModifyPeopleForm(modified_first_name=select_people.first_name, modified_last_name=select_people.last_name, 
+    modify_form = ModifyPeopleForm(modified_first_name=select_people.first_name, modified_last_name=select_people.last_name, 
                 modified_phone_cell=select_people.phone_cell, modified_notes=select_people.notes,
                 modified_ptype=select_people.ptype, modified_pstatus=select_people.pstatus, 
                 modified_house_number=select_people.house_number, modified_street_name=select_people.street_name, 
                 modified_city_name=select_people.city_name, modified_zip_code=select_people.zip_code, modified_price=select_people.price)
-    if form.validate_on_submit():
-        select_people.first_name=form.modified_first_name.data
-        select_people.last_name=form.modified_last_name.data
-        select_people.phone_cell=form.modified_phone_cell.data
-        select_people.notes=form.modified_notes.data
-        select_people.ptype=form.modified_ptype.data
-        select_people.pstatus=form.modified_pstatus.data
-        select_people.house_number=form.modified_house_number.data
-        select_people.street_name=form.modified_street_name.data
-        select_people.city_name=form.modified_city_name.data
-        select_people.state_name=form.modified_state_name.data
-        select_people.zip_code=form.modified_zip_code.data
-        select_people.price=form.modified_price.data
+    #if modify_form.validate_on_submit():
+    fif modify_form.validate_on_submit() and modify_form.submit1.data:
+        select_people.first_name=modify_form.modified_first_name.data
+        select_people.last_name=modify_form.modified_last_name.data
+        select_people.phone_cell=modify_form.modified_phone_cell.data
+        select_people.notes=modify_form.modified_notes.data
+        select_people.ptype=modify_form.modified_ptype.data
+        select_people.pstatus=modify_form.modified_pstatus.data
+        select_people.house_number=modify_form.modified_house_number.data
+        select_people.street_name=modify_form.modified_street_name.data
+        select_people.city_name=modify_form.modified_city_name.data
+        select_people.state_name=modify_form.modified_state_name.data
+        select_people.zip_code=modify_form.modified_zip_code.data
+        select_people.price=modify_form.modified_price.data
         db.session.commit()
         flash('Your Persons Information has been modified.')
         return redirect(url_for('view_people', people_id=people_id))
@@ -94,7 +95,8 @@ def view_people(people_id):
     notes_form = AddProfileNotesForm()
     #viewpnotes=view_profile_notes(current_user=current_user, people_account_pk=people_id)
 
-    if notes_form.validate_on_submit():
+    #if notes_form.validate_on_submit():
+    if notes_form.validate_on_submit() and notes_form.submit2.data:
         profile_note=notes_form.pnotes.data
         profile_note_storage=add_profile_note(current_user=current_user, pnotes=profile_note, people_account_pk=people_id)
         if profile_note_storage == True:
@@ -107,7 +109,7 @@ def view_people(people_id):
 
         #flash('You CLICKED IT')
         #return redirect(url_for('/view_people/<people_id>'))
-    return render_template('view_people.html', title = 'View Person', select_people=select_people, form=form, notes_form=notes_form, viewpnotes=pnotes)
+    return render_template('view_people.html', title = 'View Person', select_people=select_people, modify_form=modify_form, notes_form=notes_form, viewpnotes=pnotes)
 
 @app.route('/convert_client/<people_id>', methods=['GET', 'POST'])
 @login_required
