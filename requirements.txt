@@ -14,7 +14,7 @@ chardet==3.0.4
 Click==7.0
 cmake==3.13.2.post1
 command-not-found==0.3
-cryptography==2.1.4
+cryptography==3.2
 cssselect2==0.2.1
 cupshelpers==1.0
 cycler==0.10.0
