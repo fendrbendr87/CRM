@@ -37,7 +37,7 @@ Flask-SQLAlchemy==2.3.2
 Flask-WeasyPrint==0.5
 Flask-WTF==0.14.2
 gast==0.2.2
-Glances==2.11.1
+Glances==3.2.1
 grpcio==1.18.0
 h5py==2.9.0
 html5lib==1.0.1
